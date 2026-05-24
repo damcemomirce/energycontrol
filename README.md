@@ -1,191 +1,230 @@
-# ⚡ EnergyControl — Heavy Machinery Parts Website
+# Earth Mining and Construction Equipment
 
-Premium aftermarket parts for Caterpillar, Komatsu, Volvo, Hitachi, John Deere, SKF, and more.
+Premium OEM & aftermarket spare parts for heavy mining and construction machinery.
 
-**Live preview:** Open `index.html` in any browser — no build step required.
+**Live site:** Bilingual EN | МК — dark industrial theme with cinematic mining photography.
 
 ---
 
-## 📁 Folder Structure
+## Quick Local Preview
 
-```
-energycontrol/
-├── index.html          ← Homepage (main file)
-├── about.html          ← About Us (coming — see "Next Pages")
-├── products.html       ← Full product catalog (coming)
-├── brands.html         ← All supported brands (coming)
-├── gallery.html        ← Photo gallery page (coming)
-├── contact.html        ← Standalone contact page (coming)
-├── css/
-│   └── style.css       ← Custom styles (extends Tailwind)
-├── js/
-│   └── main.js         ← All interactivity + product data
-├── img/                ← Drop your real photos here
-└── README.md           ← This file
+No build tools, no dependencies — pure HTML/CSS/JS.
+
+```bash
+git clone git@github.com:damcemomirce/energycontrol.git
+cd energycontrol
+python3 -m http.server 8080
+# Open http://localhost:8080
 ```
 
 ---
 
-## 🚀 Quick Start
+## Ubuntu VPS Deployment (Step by Step)
 
-1. **Open the site** — double-click `index.html` or serve it locally:
+Assumes a fresh **Ubuntu 22.04 or 24.04** VPS. Run all commands as root or with `sudo`.
 
-   ```bash
-   cd energycontrol
-   python3 -m http.server 8000
-   # Then visit http://localhost:8000
-   ```
+### 1. Update the system
 
-2. **No build tools needed.** Tailwind loads from CDN. Font Awesome and Google Fonts load from CDN.
-
-3. **It's a single static site.** Upload the entire `energycontrol/` folder to any web host (Netlify, Vercel, shared hosting, S3, etc.).
-
----
-
-## 📝 How to Customize
-
-### 1. Replace Text Content
-
-Open `index.html` and search for these strings — replace them with your real content:
-
-| What | Where (search for) |
-|------|-----|
-| Company address | `Industrijska 42, 1000 Ljubljana` |
-| Phone number | `+386 40 123 456` |
-| Email | `sales@energycontrol.com` |
-| WhatsApp | `38640123456` (in the wa.me link) |
-| GPS coordinates | `46.0569° N, 14.5058° E` |
-| Hero tagline text | `Parts That Keep The World Moving` |
-| Stats numbers | `15,000+`, `3,200+`, `12` years, `24h` |
-| Testimonials | Names and quotes in the testimonials section |
-| Footer social links | `#` placeholders for Facebook, LinkedIn, etc. |
-
-### 2. Replace Images
-
-**Hero background:**
-```html
-<img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920&q=80" ...>
-```
-→ Replace the `src` with your own high-res image. For best results, use **1920×1080** or wider, dark machinery photos.
-
-**Gallery preview images (4 thumbnails):**
-Search `#gallery-preview` in the HTML — replace each `<img src="...">` with your own photos.
-
-**Product images:**
-Each product in `js/main.js` has an `image` property. Replace the Unsplash URLs with paths to your own images:
-```js
-image: 'img/engine-kit.jpg',
+```bash
+sudo apt update && sudo apt upgrade -y
 ```
 
-**Brand logos:**
-Currently using styled text badges. To use real logos:
-1. Drop logo PNG/SVG files into `img/brands/`
-2. Replace the `<span>` text badges with `<img>` tags. Example:
-   ```html
-   <div class="brand-card ...">
-     <img src="img/brands/caterpillar.png" alt="Caterpillar" class="h-10 mx-auto">
-   </div>
-   ```
+### 2. Install nginx
 
-### 3. Add / Edit Products
-
-All products live in the `products` array in `js/main.js` (around line 12). Each product looks like this:
-
-```js
-{
-  id: 13,                                          // Unique number
-  name: 'CAT 336D Radiator Assembly',              // Product name
-  oem: 'CAT 352-0211',                             // OEM / part number
-  category: 'engine',                              // One of: engine, hydraulic, undercarriage, bearings, electrical, filters, buckets
-  brands: ['caterpillar'],                         // Array: caterpillar, komatsu, volvo, hitachi, johndeere, skf
-  image: 'img/radiator.jpg',                       // Image path
-  description: 'Heavy-duty aluminum radiator...',  // Short description (1-2 sentences)
-  price: 'Request Quote',                          // Keep as-is or set actual price
-},
+```bash
+sudo apt install nginx -y
+sudo systemctl enable nginx
+sudo systemctl start nginx
 ```
 
-**Supported categories** (matches the filter dropdown):
-`engine`, `hydraulic`, `undercarriage`, `bearings`, `electrical`, `filters`, `buckets`
+Verify: visit `http://YOUR_VPS_IP` — you should see the nginx welcome page.
 
-**Supported brands** (for filtering):
-`caterpillar`, `komatsu`, `volvo`, `hitachi`, `johndeere`, `skf`
+### 3. Configure firewall (if using ufw)
 
-Add new products by appending objects to the array. No other changes needed — filters and search work automatically.
+```bash
+sudo ufw allow 22/tcp        # SSH
+sudo ufw allow 80/tcp        # HTTP
+sudo ufw allow 443/tcp       # HTTPS (for later)
+sudo ufw enable
+```
 
-### 4. Contact Form (Formspree Setup)
+### 4. Install git and clone the repo
 
-The contact form uses [Formspree](https://formspree.io) (free tier: 50 submissions/month).
+```bash
+sudo apt install git -y
+cd /var/www
+sudo git clone https://github.com/damcemomirce/energycontrol.git
+```
 
-1. Go to https://formspree.io and create a free account
-2. Create a new form → copy your form ID (looks like `xabcdeyz`)
-3. In `index.html`, search for `REPLACE_WITH_YOUR_FORM_ID` and replace it with your real ID:
-   ```html
-   <form id="quote-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-   ```
-4. Test by submitting a quote request — it'll land in your email.
+If the repo is private, generate an SSH key and add it to GitHub first:
 
-> 💡 Alternative: Replace the `action` URL with any form backend (Netlify Forms, Getform, custom PHP, etc.).
+```bash
+ssh-keygen -t ed25519 -C "server@yourdomain.com" -f ~/.ssh/github
+cat ~/.ssh/github.pub   # Add this to GitHub → Settings → Deploy Keys
+```
 
-### 5. Change Colors
+Then clone via SSH:
 
-The color palette is defined in the Tailwind config at the top of `index.html`:
+```bash
+sudo GIT_SSH_COMMAND="ssh -i ~/.ssh/github" git clone git@github.com:damcemomirce/energycontrol.git /var/www/energycontrol
+```
 
-```js
-colors: {
-  ec: {
-    yellow: '#FFCC00',   // Primary accent
-    orange: '#F97316',   // Secondary accent
-    dark:   '#0A0A0A',   // Page background
-    card:   '#141414',   // Card backgrounds
-    border: '#1F1F1F',   // Borders
-    muted:  '#A0A0A0',   // Muted text
-    light:  '#E5E5E5',   // Body text
-  }
+### 5. Set permissions
+
+```bash
+sudo chown -R www-data:www-data /var/www/energycontrol
+sudo chmod -R 755 /var/www/energycontrol
+```
+
+### 6. Configure nginx
+
+Create a site config:
+
+```bash
+sudo nano /etc/nginx/sites-available/energycontrol
+```
+
+Paste this (replace `yourdomain.com` with your actual domain or VPS IP):
+
+```nginx
+server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+
+    root /var/www/energycontrol;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Cache static assets for 30 days
+    location ~* \.(jpg|jpeg|png|gif|svg|css|js|woff2)$ {
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Gzip compression
+    gzip on;
+    gzip_types text/html text/css application/javascript image/svg+xml;
+    gzip_min_length 256;
 }
 ```
 
-Change the hex values and the entire site updates. Keep contrast in mind — the dark theme needs bright accents.
+Enable the site:
 
-### 6. SEO / Meta Tags
+```bash
+sudo ln -s /etc/nginx/sites-available/energycontrol /etc/nginx/sites-enabled/
+sudo rm /etc/nginx/sites-enabled/default   # Remove default site
+sudo nginx -t                               # Test config
+sudo systemctl reload nginx
+```
 
-Update the `<meta name="description">` and `<title>` in the `<head>` of each page with your real company info.
+### 7. (Optional) Set up HTTPS with Let's Encrypt
 
----
+```bash
+sudo apt install certbot python3-certbot-nginx -y
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+```
 
-## 📱 Responsive Behavior
+Follow the prompts. Certbot auto-renews certificates.
 
-| Breakpoint | Behavior |
-|---|---|
-| Mobile (<640px) | Single column, hamburger menu, stacked hero |
-| Tablet (640–1024px) | 2-column product grid, inline nav |
-| Desktop (>1024px) | Full layout, 4-column product grid |
+### 8. Verify
 
----
-
-## 🧩 Tech Stack
-
-- **HTML5** — semantic, accessible markup
-- **Tailwind CSS** (CDN) — utility-first styling
-- **Vanilla JavaScript** — zero dependencies, no frameworks
-- **Font Awesome 6** (CDN) — icons
-- **Google Fonts** — Barlow Condensed (headings) + Inter (body)
-- **Formspree** — contact form backend (or your own)
+Visit `http://yourdomain.com` (or `http://YOUR_VPS_IP`). You should see the full bilingual website.
 
 ---
 
-## 📋 Next Pages (Coming)
+## Updating the Site Later
 
-- `about.html` — Full company story, team, certifications
-- `products.html` — Expanded catalog with detailed filtering
-- `brands.html` — Per-brand detail pages with supported models
-- `gallery.html` — Full photo gallery with masonry layout
-- `contact.html` — Standalone contact page with map
+```bash
+cd /var/www/energycontrol
+sudo git pull origin main
+sudo chown -R www-data:www-data .
+```
+
+No restart needed — it's static HTML.
 
 ---
 
-## 🛠 Tips
+## File Structure
 
-- **Images:** Run your photos through [TinyPNG](https://tinypng.com) or `squoosh.app` before adding them. Keep images under 300KB for fast loading.
-- **Favicon:** Drop a `favicon.ico` or `favicon.png` in the root folder and add `<link rel="icon" href="favicon.png">` inside `<head>`.
-- **Google Maps:** Replace the map placeholder with an actual `<iframe>` embed from Google Maps.
-- **Analytics:** Add your Google Analytics or Plausible snippet before `</head>`.
+```
+energycontrol/
+├── index.html              ← Main bilingual homepage (EN | МК)
+├── gallery.html            ← Photo gallery page
+├── logos.html              ← Logo concept page
+├── README.md               ← This file
+├── .gitignore
+├── css/
+│   └── style.css           ← Additional styles
+├── js/
+│   └── main.js             ← JavaScript (gallery, interactions)
+└── img/
+    ├── logo/               ← SVG logos (EN + MK versions)
+    │   ├── logo-main-horizontal.svg
+    │   ├── logo-mk.svg
+    │   ├── logo-icon-square.svg
+    │   └── logo-white-version.svg
+    ├── mining/             ← Background photos (optimized JPEG)
+    │   ├── cat-wheel-loader-hero.jpg
+    │   ├── cat-mining-demo.jpg
+    │   ├── mining-excavator-belaz.jpg
+    │   ├── open-pit-mine.jpg
+    │   ├── gold-mine.jpg
+    │   └── bauma-excavator.jpg
+    └── gallery/            ← Product gallery photos
+```
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| HTML | Semantic HTML5 |
+| CSS | Custom CSS (no framework — embedded in index.html) |
+| JS | Vanilla JavaScript (no frameworks) |
+| Fonts | Google Fonts — Barlow Condensed + Inter |
+| Icons | Font Awesome 6 (CDN) |
+| Server | Nginx (any static file server works) |
+| Languages | English + Macedonian (JS-based i18n) |
+
+---
+
+## Features
+
+- 🌐 **Bilingual** — English / Macedonian with persistent language switcher
+- 🎬 **Cinematic backgrounds** — 4 sections with premium mining photography
+- 🌙 **Dark industrial theme** — Caterpillar yellow (#FFB800) accents
+- ⚡ **Zero dependencies** — pure HTML/CSS/JS, no npm/build step
+- 📱 **Fully responsive** — mobile, tablet, desktop
+- ✨ **Animated dust particles** on hero section
+- 🫧 **Frosted glass** card effects (backdrop-filter)
+- 🔍 **SEO-friendly** — semantic markup, meta tags
+- 🚀 **Fast** — static files, gzip-ready, cacheable assets
+
+---
+
+## Customization
+
+### Change contact info
+Edit `index.html` and search for:
+- `+389 71 229 026` — phone number
+- `sales@energycontrol.com.mk` — email
+- `Kairska 6, 1000 Skopje, Macedonia` — address
+
+### Change background photos
+Replace files in `img/mining/` with your own 16:9 JPEG images (2560×1440px recommended).
+
+### Add/update translations
+Edit the `i18n` object in the `<script>` tag at the bottom of `index.html`. The `mk` object contains all Macedonian translations.
+
+### Change brand colors
+Search `#FFB800` and `#E69500` in `index.html` — these are the primary yellow and darker yellow. The background is `#080808`.
+
+---
+
+## License
+
+Private — Earth Mining and Construction Equipment. All rights reserved.
