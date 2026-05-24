@@ -1,0 +1,106 @@
+/* ═══════════════════════════════════════════
+   EnergyControl — Custom Styles
+   Extends Tailwind CSS with brand-specific effects
+   ═══════════════════════════════════════════ */
+
+/* ── Smooth Scroll (if not using html.scroll-smooth) ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Selection Colors ── */
+::selection {
+  background: rgba(255, 204, 0, 0.3);
+  color: #fff;
+}
+
+/* ── Scrollbar Styling ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0A0A0A; }
+::-webkit-scrollbar-thumb { background: #1F1F1F; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #FFCC00; }
+
+/* ── Focus Ring Override ── */
+*:focus-visible {
+  outline: 2px solid #FFCC00;
+  outline-offset: 2px;
+}
+
+/* ── Header Shadow on Scroll ── */
+#header.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Mobile Menu Animation ── */
+#mobile-menu {
+  animation: slideDown 0.25s ease-out;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Product Card Hover Glow ── */
+.product-card {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.product-card:hover {
+  border-color: rgba(255, 204, 0, 0.4);
+  box-shadow: 0 8px 40px rgba(255, 204, 0, 0.06);
+}
+
+/* ── Lightbox Animation ── */
+#lightbox.show {
+  display: flex;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Form Input Autofill Override ── */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: 0 0 0 1000px #141414 inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ── Scroll-Reveal Animation ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Pulse Dot for "Online" ── */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Responsive Table Wrapper ── */
+@media (max-width: 640px) {
+  .hero-stats { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Print Styles ── */
+@media print {
+  header, footer, #lightbox, .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
+}

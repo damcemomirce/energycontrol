@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Earth Mining Construction Gallery – Real parts, real machines. See our heavy equipment attachments and wear parts in action.">
+  <title>Gallery – Earth Mining Construction | Heavy Machinery Parts</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="img/logo/logo-icon-square.svg">
+  <link rel="apple-touch-icon" href="img/logo/logo-icon-square.svg">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ec: {
+              yellow: '#FFCC00',
+              orange: '#F97316',
+              dark:  '#0A0A0A',
+              card:  '#111111',
+              border:'#222222',
+              muted: '#999999',
+              light: '#E5E5E5',
+            }
+          },
+          fontFamily: {
+            heading: ['"Barlow Condensed"', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .gallery-item {
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.6);
+    }
+    .gallery-item img {
+      transition: transform 0.6s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+    .filter-btn.active {
+      background: #FFCC00;
+      color: #0A0A0A;
+      border-color: #FFCC00;
+    }
+  </style>
+</head>
+<body class="bg-ec-dark text-ec-light font-body antialiased">
+
+  <!-- HEADER -->
+  <header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-ec-dark/95 backdrop-blur-md border-b border-white/5">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <a href="index.html" class="flex items-center flex-shrink-0 hover:opacity-90 transition-opacity">
+          <img src="img/logo/logo-main-horizontal.svg" alt="Earth Mining Construction" class="h-10 lg:h-12 w-auto">
+        </a>
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="index.html" class="px-4 py-2 text-ec-muted hover:text-white transition-colors text-sm uppercase tracking-wider">Home</a>
+          <a href="index.html#products" class="px-4 py-2 text-ec-muted hover:text-white transition-colors text-sm uppercase tracking-wider">Products</a>
+          <a href="index.html#industries" class="px-4 py-2 text-ec-muted hover:text-white transition-colors text-sm uppercase tracking-wider">Industries</a>
+          <a href="gallery.html" class="px-4 py-2 text-ec-yellow font-semibold text-sm uppercase tracking-wider">Gallery</a>
+          <a href="index.html#contact" class="px-4 py-2 text-ec-muted hover:text-white transition-colors text-sm uppercase tracking-wider">Contact</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="index.html#contact" class="hidden sm:inline-flex items-center gap-2 bg-ec-yellow text-ec-dark font-bold px-5 py-2.5 rounded text-sm uppercase tracking-wider hover:bg-ec-orange hover:text-white transition-all">
+            <i class="fas fa-file-invoice-dollar"></i> Request Quote
+          </a>
+          <button id="mobile-toggle" class="lg:hidden text-white text-2xl p-1" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="lg:hidden hidden pb-4 border-t border-ec-border mt-2 pt-4">
+        <a href="index.html" class="block py-3 text-ec-muted uppercase tracking-wider">Home</a>
+        <a href="index.html#products" class="block py-3 text-ec-muted uppercase tracking-wider">Products</a>
+        <a href="index.html#industries" class="block py-3 text-ec-muted uppercase tracking-wider">Industries</a>
+        <a href="gallery.html" class="block py-3 text-ec-yellow font-semibold uppercase tracking-wider">Gallery</a>
+        <a href="index.html#contact" class="block py-3 text-ec-muted uppercase tracking-wider">Contact</a>
+        <a href="index.html#contact" class="inline-flex items-center gap-2 bg-ec-yellow text-ec-dark font-bold px-5 py-3 rounded text-sm uppercase tracking-wider mt-3">
+          <i class="fas fa-file-invoice-dollar"></i> Request Quote
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-20 lg:pt-24">
+
+    <!-- Page Hero -->
+    <section class="relative py-16 lg:py-24 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-ec-card to-transparent"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-ec-yellow font-heading font-semibold tracking-[0.3em] uppercase text-sm mb-3">Gallery</p>
+        <h1 class="font-heading font-black text-3xl sm:text-4xl lg:text-6xl text-white mb-4">
+          Real Parts. Real Machines.<br>
+          <span class="text-ec-yellow">Real Results.</span>
+        </h1>
+        <div class="divider w-32 mx-auto mb-6" style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,204,0,0.4),transparent)"></div>
+        <p class="text-ec-muted max-w-2xl mx-auto text-lg">
+          Browse our collection of attachments, wear parts, and heavy equipment components. Every product built for performance in the toughest conditions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <section class="pb-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-3" id="gallery-filters">
+          <button class="filter-btn active px-5 py-2.5 border border-ec-border rounded-lg text-sm uppercase tracking-wider text-ec-muted hover:text-white hover:border-ec-yellow transition-all" data-filter="all">All</button>
+          <button class="filter-btn px-5 py-2.5 border border-ec-border rounded-lg text-sm uppercase tracking-wider text-ec-muted hover:text-white hover:border-ec-yellow transition-all" data-filter="buckets">Buckets</button>
+          <button class="filter-btn px-5 py-2.5 border border-ec-border rounded-lg text-sm uppercase tracking-wider text-ec-muted hover:text-white hover:border-ec-yellow transition-all" data-filter="attachments">Attachments</button>
+          <button class="filter-btn px-5 py-2.5 border border-ec-border rounded-lg text-sm uppercase tracking-wider text-ec-muted hover:text-white hover:border-ec-yellow transition-all" data-filter="forestry">Forestry</button>
+          <button class="filter-btn px-5 py-2.5 border border-ec-border rounded-lg text-sm uppercase tracking-wider text-ec-muted hover:text-white hover:border-ec-yellow transition-all" data-filter="screening">Screening</button>
+          <button class="filter-btn px-5 py-2.5 border border-ec-border rounded-lg text-sm uppercase tracking-wider text-ec-muted hover:text-white hover:border-ec-yellow transition-all" data-filter="mixing">Concrete / Mixing</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="pb-24 lg:pb-32">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-grid">
+
+          <!-- Buckets -->
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="buckets" onclick="openLightboxGallery(0)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-4in1.jpg" alt="4-in-1 Multi-Purpose Bucket" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-yellow uppercase tracking-wider font-heading">Buckets</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">4-in-1 Multi-Purpose Bucket</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="buckets" onclick="openLightboxGallery(1)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-banana.jpg" alt="Banana Bucket — Heavy Duty" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-yellow uppercase tracking-wider font-heading">Buckets</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Banana Bucket — Heavy Duty</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="buckets" onclick="openLightboxGallery(2)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-cable.jpg" alt="Cable Bucket — General Duty" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-yellow uppercase tracking-wider font-heading">Buckets</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Cable Bucket — General Duty</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="buckets" onclick="openLightboxGallery(3)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-cable-hd.jpg" alt="Cable Bucket — Heavy Duty" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-yellow uppercase tracking-wider font-heading">Buckets</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Cable Bucket — Heavy Duty</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="buckets" onclick="openLightboxGallery(4)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-4in1-2.jpg" alt="4-in-1 Bucket — Side View" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-yellow uppercase tracking-wider font-heading">Buckets</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">4-in-1 Bucket — Compact Model</h3>
+            </div>
+          </div>
+
+          <!-- Screening / Sorting Buckets -->
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="screening" onclick="openLightboxGallery(5)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-grigliata.jpg" alt="Grid Sorting Bucket — Standard" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-orange uppercase tracking-wider font-heading">Screening</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Grid Sorting Bucket — Standard</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="screening" onclick="openLightboxGallery(6)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-multiscreening.jpg" alt="Multi-Screening Bucket" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-orange uppercase tracking-wider font-heading">Screening</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Multi-Screening Bucket</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="screening" onclick="openLightboxGallery(7)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-netherlands.jpg" alt="Grid Bucket — Netherlands Model" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-orange uppercase tracking-wider font-heading">Screening</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Grid Bucket — Netherlands Type</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="screening" onclick="openLightboxGallery(8)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-grigliata-gd.jpg" alt="Grid Bucket — General Duty" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-orange uppercase tracking-wider font-heading">Screening</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Grid Bucket — General Duty</h3>
+            </div>
+          </div>
+
+          <!-- Attachments -->
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="attachments" onclick="openLightboxGallery(9)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/attacco-rapido.jpg" alt="Quick Coupler — Fast Lock" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-yellow uppercase tracking-wider font-heading">Attachments</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Quick Coupler — Fast Lock</h3>
+            </div>
+          </div>
+
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="buckets" onclick="openLightboxGallery(10)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-mordente.jpg" alt="Clamshell Bucket" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-yellow uppercase tracking-wider font-heading">Buckets</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Clamshell / Grab Bucket</h3>
+            </div>
+          </div>
+
+          <!-- Forestry -->
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="forestry" onclick="openLightboxGallery(11)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/tranciarami.jpg" alt="Forestry Brush Cutter Bar" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-orange uppercase tracking-wider font-heading">Forestry</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Brush Cutter Bar — Sharp Cut</h3>
+            </div>
+          </div>
+
+          <!-- Mixing -->
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="mixing" onclick="openLightboxGallery(12)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-mixer.jpg" alt="Concrete Mixing Bucket" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-orange uppercase tracking-wider font-heading">Concrete / Mixing</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Concrete Mixing Bucket</h3>
+            </div>
+          </div>
+
+          <!-- Cleaning Bucket -->
+          <div class="gallery-item group relative overflow-hidden rounded-xl bg-ec-card border border-ec-border" data-category="attachments" onclick="openLightboxGallery(13)">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="img/gallery/bucket-cleaning.jpg" alt="Ditch Cleaning Bucket" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            <div class="p-4">
+              <span class="text-xs text-ec-yellow uppercase tracking-wider font-heading">Attachments</span>
+              <h3 class="font-heading font-bold text-white text-sm mt-1">Ditch Cleaning Bucket</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 lg:py-24 bg-ec-card border-t border-ec-border">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="font-heading font-black text-3xl sm:text-4xl text-white mb-4">Need Something Specific?</h2>
+        <p class="text-ec-muted max-w-xl mx-auto mb-8">We source custom attachments and wear parts for any machine. Send us your specifications.</p>
+        <a href="index.html#contact" class="inline-flex items-center gap-2 bg-ec-yellow text-ec-dark font-bold px-8 py-4 rounded text-lg uppercase tracking-wider hover:bg-ec-orange hover:text-white transition-all hover:shadow-[0_0_40px_rgba(255,204,0,0.3)]">
+          <i class="fas fa-file-invoice-dollar"></i> Request a Quote
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-ec-card border-t border-ec-border pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div>
+          <img src="img/logo/logo-main-horizontal.svg" alt="Earth Mining Construction" class="h-10 mb-4">
+          <p class="text-ec-muted text-sm leading-relaxed">Premium aftermarket parts and attachments for heavy machinery. Keeping your equipment running since 2014.</p>
+        </div>
+        <div>
+          <h4 class="font-heading font-bold text-white text-lg mb-4">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="text-ec-muted hover:text-ec-yellow transition-colors text-sm">Home</a></li>
+            <li><a href="index.html#products" class="text-ec-muted hover:text-ec-yellow transition-colors text-sm">Products</a></li>
+            <li><a href="gallery.html" class="text-ec-muted hover:text-ec-yellow transition-colors text-sm">Gallery</a></li>
+            <li><a href="index.html#contact" class="text-ec-muted hover:text-ec-yellow transition-colors text-sm">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-heading font-bold text-white text-lg mb-4">Categories</h4>
+          <ul class="space-y-3">
+            <li><a href="index.html#products" class="text-ec-muted hover:text-ec-yellow transition-colors text-sm">Buckets</a></li>
+            <li><a href="index.html#products" class="text-ec-muted hover:text-ec-yellow transition-colors text-sm">Attachments</a></li>
+            <li><a href="index.html#products" class="text-ec-muted hover:text-ec-yellow transition-colors text-sm">Wear Parts</a></li>
+            <li><a href="index.html#products" class="text-ec-muted hover:text-ec-yellow transition-colors text-sm">Undercarriage</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-heading font-bold text-white text-lg mb-4">Contact</h4>
+          <p class="text-ec-muted text-sm">Kairska 6, 1000 Skopje<br>Macedonia</p>
+          <p class="text-ec-muted text-sm mt-2">+389 71 229 026</p>
+          <a href="mailto:sales@energycontrol.com.mk" class="text-ec-yellow text-sm hover:underline">sales@energycontrol.com.mk</a>
+        </div>
+      </div>
+      <div class="border-t border-ec-border pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-ec-muted text-sm">&copy; 2024 Earth Mining Construction. All rights reserved.</p>
+        <div class="flex gap-6 text-sm">
+          <a href="#" class="text-ec-muted hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="text-ec-muted hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="fixed inset-0 z-[100] bg-black/96 hidden flex items-center justify-center p-4" onclick="closeLightbox(event)">
+    <button class="absolute top-6 right-6 text-white/60 hover:text-white text-3xl transition-colors z-10" onclick="closeLightbox()">
+      <i class="fas fa-times"></i>
+    </button>
+    <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-3xl transition-colors z-10" onclick="event.stopPropagation(); navigateLightbox(-1)">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[85vh] object-contain rounded-lg" onclick="event.stopPropagation()">
+    <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-3xl transition-colors z-10" onclick="event.stopPropagation(); navigateLightbox(1)">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <p id="lightbox-caption" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/80 text-sm"></p>
+  </div>
+
+  <script>
+    /* ── Mobile Menu ── */
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const toggleIcon = toggle?.querySelector('i');
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const isOpen = !menu.classList.contains('hidden');
+        menu.classList.toggle('hidden', isOpen);
+        if (toggleIcon) toggleIcon.className = isOpen ? 'fas fa-bars' : 'fas fa-times';
+      });
+      menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        if (toggleIcon) toggleIcon.className = 'fas fa-bars';
+      }));
+    }
+
+    /* ── Gallery Filters ── */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('#gallery-grid > .gallery-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        galleryItems.forEach(item => {
+          item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none';
+        });
+      });
+    });
+
+    /* ── Lightbox ── */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    let galleryImages = [];
+    let lightboxIndex = 0;
+
+    galleryImages = Array.from(galleryItems).map(item => ({
+      src: item.querySelector('img').src,
+      alt: item.querySelector('img').alt,
+      name: item.querySelector('h3')?.textContent || '',
+    }));
+
+    window.openLightboxGallery = function(index) {
+      lightboxIndex = index;
+      showLightbox();
+      lightbox.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    };
+
+    function showLightbox() {
+      const img = galleryImages[lightboxIndex];
+      if (lightboxImg) { lightboxImg.src = img.src; lightboxImg.alt = img.alt; }
+      if (lightboxCaption) lightboxCaption.textContent = img.name;
+    }
+
+    window.navigateLightbox = function(dir) {
+      lightboxIndex = (lightboxIndex + dir + galleryImages.length) % galleryImages.length;
+      showLightbox();
+    };
+
+    window.closeLightbox = function(e) {
+      if (e && e.target !== lightbox) return;
+      lightbox.classList.remove('show');
+      document.body.style.overflow = '';
+    };
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox?.classList.contains('show')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    /* ── Header Scroll ── */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header?.classList.toggle('scrolled', window.scrollY > 50);
+    });
+  </script>
+
+  <!-- Floating Quote Button -->
+  <a href="index.html#contact" id="floating-quote" class="fixed bottom-6 right-6 z-50 bg-ec-yellow hover:bg-ec-orange text-ec-dark hover:text-white font-bold px-5 py-3.5 rounded-full shadow-2xl transition-all flex items-center gap-2 text-sm uppercase tracking-wider" title="Request a Quote" style="animation: glow-pulse 2.5s ease-in-out infinite;">
+    <i class="fas fa-file-invoice-dollar text-lg"></i>
+    <span class="hidden sm:inline">Quick Quote</span>
+  </a>
+
+  <style>
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(255,204,0,0.2); }
+      50% { box-shadow: 0 4px 40px rgba(255,204,0,0.5); }
+    }
+    #lightbox.show { display: flex; }
+  </style>
+</body>
+</html>

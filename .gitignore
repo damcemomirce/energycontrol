@@ -1,0 +1,5 @@
+img/mining/backup/
+*.psd
+*.ai
+.DS_Store
+Thumbs.db

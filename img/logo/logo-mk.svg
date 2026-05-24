@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 300" width="1100" height="300">
+  <defs>
+    <linearGradient id="gearGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB800"/>
+      <stop offset="100%" style="stop-color:#E69500"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(95,150)">
+    <circle cx="0" cy="0" r="62" fill="none" stroke="url(#gearGrad)" stroke-width="14" opacity="0.95"/>
+    <g stroke="url(#gearGrad)" stroke-width="12" stroke-linecap="round">
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(0)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(30)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(60)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(90)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(120)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(150)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(180)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(210)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(240)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(270)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(300)"/>
+      <line x1="0" y1="-72" x2="0" y2="-84" transform="rotate(330)"/>
+    </g>
+    <circle cx="0" cy="0" r="42" fill="#0A0A0A" stroke="url(#gearGrad)" stroke-width="5"/>
+    <text x="0" y="14" font-family="'Barlow Condensed','Arial Black',sans-serif" font-size="32" font-weight="900" fill="#FFB800" text-anchor="middle" letter-spacing="2">EMC</text>
+    <path d="M-10,-58 Q26,-86 50,-64" fill="none" stroke="#E69500" stroke-width="3.5" stroke-linecap="round" opacity="0.8"/>
+    <path d="M-18,-52 Q-46,-68 -52,-38" fill="none" stroke="#FFB800" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  </g>
+
+  <g transform="translate(250,100)">
+    <text font-family="'Barlow Condensed','Arial Black',sans-serif" font-size="48" font-weight="900" letter-spacing="5" fill="#FFFFFF">ЗЕМЈА</text>
+    <text x="0" y="46" font-family="'Barlow Condensed','Arial Black',sans-serif" font-size="25" font-weight="700" letter-spacing="6" fill="#FFB800">МИНИРАЊЕ И ГРАДЕЖНИШТВО</text>
+    <text x="0" y="78" font-family="'Inter',Arial,sans-serif" font-size="14" font-weight="600" letter-spacing="5" fill="#BBBBBB">ОПРЕМА / СЕРВИС И РЕЗЕРВНИ ДЕЛОВИ</text>
+  </g>
+</svg>

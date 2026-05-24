@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Earth Mining and Construction Equipment — Premium OEM & aftermarket spare parts for heavy machinery. Worldwide delivery, competitive prices.">
+  <title>Earth Mining and Construction Equipment — Premium Spare Parts</title>
+  <link rel="icon" type="image/svg+xml" href="img/logo/logo-icon-square.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Barlow Condensed','Arial Narrow',sans-serif;
+      background:#080808;
+      color:#fff;
+      font-weight:400;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    /* ═══════════ NAVIGATION ═══════════ */
+    #topnav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 48px;
+      background:rgba(8,8,8,0.92);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,184,0,0.08);
+      transition:padding 0.3s;
+    }
+    #topnav.scrolled{padding:12px 48px}
+    .logo-img{height:96px;width:auto}
+    .nav-right{display:flex;align-items:center;gap:28px}
+    .nav-links{display:flex;align-items:center;gap:36px}
+    .nav-links a{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.95rem;font-weight:600;text-transform:uppercase;
+      letter-spacing:0.12em;color:rgba(255,255,255,0.75);text-decoration:none;
+      position:relative;transition:color 0.3s;
+    }
+    .nav-links a::after{
+      content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+      background:#FFB800;transition:width 0.3s;
+    }
+    .nav-links a:hover{color:#fff}
+    .nav-links a:hover::after{width:100%}
+
+    /* Language switcher */
+    .lang-switch{
+      display:flex;align-items:center;gap:0;
+      border:1px solid rgba(255,184,0,0.3);
+      border-radius:4px;overflow:hidden;
+    }
+    .lang-switch button{
+      background:transparent;border:none;color:rgba(255,255,255,0.55);
+      font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:600;
+      padding:6px 12px;cursor:pointer;transition:all 0.3s;
+      letter-spacing:0.05em;
+    }
+    .lang-switch button.active{
+      background:#FFB800;color:#080808;
+    }
+    .lang-switch button:hover:not(.active){
+      color:#FFB800;
+    }
+
+    .btn-quote{
+      background:#FFB800;color:#080808!important;
+      padding:12px 28px!important;font-weight:700!important;
+      letter-spacing:0.08em!important;
+      font-size:0.95rem!important;
+      transition:background 0.3s,transform 0.2s,box-shadow 0.3s!important;
+      animation:btnGlow 2.5s ease-in-out infinite;
+    }
+    .btn-quote:hover{
+      background:#E69500!important;transform:translateY(-2px);
+      box-shadow:0 6px 30px rgba(255,184,0,0.4);
+    }
+    .btn-quote::after{display:none!important}
+
+    #mobile-toggle{
+      display:none;background:none;border:none;color:#FFB800;
+      font-size:1.6rem;cursor:pointer;padding:4px 8px;
+    }
+
+    /* Mobile menu */
+    #mobile-menu{
+      display:none;position:fixed;inset:0;z-index:99;
+      background:rgba(8,8,8,0.98);backdrop-filter:blur(24px);
+      flex-direction:column;align-items:center;justify-content:center;gap:32px;
+    }
+    #mobile-menu.open{display:flex}
+    #mobile-menu a{
+      font-size:1.5rem;font-weight:700;color:#fff;text-decoration:none;
+      text-transform:uppercase;letter-spacing:0.15em;
+    }
+    #mobile-menu a:hover{color:#FFB800}
+    #mobile-menu .lang-switch-mobile{display:flex;gap:0;border:1px solid rgba(255,184,0,0.3);border-radius:4px;overflow:hidden}
+    #mobile-menu .lang-switch-mobile button{
+      background:transparent;border:none;color:rgba(255,255,255,0.55);
+      font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:600;
+      padding:8px 18px;cursor:pointer;
+    }
+    #mobile-menu .lang-switch-mobile button.active{background:#FFB800;color:#080808}
+    #mobile-close{
+      position:absolute;top:24px;right:32px;
+      background:none;border:none;color:#FFB800;font-size:1.8rem;cursor:pointer;
+    }
+
+    /* ═══════════ HERO ═══════════ */
+    #hero{
+      position:relative;min-height:100vh;
+      display:flex;align-items:center;justify-content:center;
+      background:url('img/mining/cat-wheel-loader-hero.jpg') center/cover no-repeat;
+      overflow:hidden;
+    }
+    #hero::before{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(180deg,
+        rgba(8,8,8,0.50) 0%,
+        rgba(8,8,8,0.60) 35%,
+        rgba(8,8,8,0.72) 70%,
+        rgba(8,8,8,0.82) 100%);
+      z-index:1;
+    }
+    #dust-canvas{position:absolute;inset:0;z-index:2;pointer-events:none}
+    .hero-content{
+      position:relative;z-index:3;
+      max-width:960px;width:100%;text-align:center;
+      padding:120px 32px 80px;
+    }
+    .hero-badge{
+      display:inline-block;
+      font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;
+      text-transform:uppercase;letter-spacing:0.25em;
+      color:#FFB800;border:1px solid rgba(255,184,0,0.3);
+      padding:6px 18px;margin-bottom:24px;
+    }
+    .hero-content h1{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:clamp(2.8rem,7vw,6rem);font-weight:900;
+      text-transform:uppercase;line-height:0.92;margin-bottom:20px;
+      color:#fff;
+      text-shadow:0 2px 24px rgba(0,0,0,0.75),0 0 60px rgba(255,184,0,0.12);
+      letter-spacing:-0.01em;
+    }
+    .hero-content h1 span{color:#FFB800}
+    .hero-subtitle{
+      font-family:'Inter',sans-serif;
+      font-size:clamp(0.95rem,1.8vw,1.15rem);
+      color:rgba(255,255,255,0.72);
+      max-width:620px;margin:0 auto 36px;line-height:1.65;
+    }
+    .hero-buttons{
+      display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
+    }
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,#FFB800,#E69500);color:#080808;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1.05rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:0.08em;
+      padding:17px 40px;text-decoration:none;
+      transition:transform 0.25s,box-shadow 0.3s;
+      box-shadow:0 4px 20px rgba(255,184,0,0.15);
+    }
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 36px rgba(255,184,0,0.35);
+    }
+    .btn-outline{
+      display:inline-flex;align-items:center;gap:10px;
+      background:transparent;color:#fff;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1.05rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:0.08em;
+      padding:16px 40px;text-decoration:none;
+      border:2px solid rgba(255,255,255,0.2);
+      transition:border-color 0.3s,color 0.3s,box-shadow 0.3s;
+    }
+    .btn-outline:hover{border-color:#FFB800;color:#FFB800;box-shadow:0 0 24px rgba(255,184,0,0.12)}
+
+    .scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;animation:bounce 2s infinite}
+    .scroll-indicator span{display:block;width:28px;height:28px;border-right:2px solid #FFB800;border-bottom:2px solid #FFB800;transform:rotate(45deg);opacity:0.7}
+    @keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,10px)}}
+    @keyframes btnGlow{0%,100%{box-shadow:0 0 8px rgba(255,184,0,0.2)}50%{box-shadow:0 0 22px rgba(255,184,0,0.45)}}
+
+    /* ═══════════ TRUST BAR ═══════════ */
+    #trust-bar{background:#0D0D0D;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:18px 40px;text-align:center}
+    #trust-bar .trust-label{font-family:'Inter',sans-serif;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:#666;margin-bottom:12px}
+    #trust-bar .brands{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px 48px}
+    #trust-bar .brands span{font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#444;transition:color 0.3s}
+    #trust-bar .brands span:hover{color:#FFB800}
+
+    /* ═══════════ SECTIONS ═══════════ */
+    .section{padding:120px 40px;text-align:center}
+    .section-dark{background:#0A0A0A}
+    .section-darker{background:#080808}
+
+    #products{position:relative;background:url('img/mining/cat-mining-demo.jpg') center/cover no-repeat}
+    #products::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(8,8,8,0.88) 0%,rgba(8,8,8,0.75) 40%,rgba(8,8,8,0.82) 100%)}
+    #products .container{position:relative;z-index:2}
+
+    #quality{position:relative;background:url('img/mining/open-pit-mine.jpg') center/cover no-repeat}
+    #quality::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(8,8,8,0.90) 0%,rgba(8,8,8,0.72) 45%,rgba(8,8,8,0.88) 100%)}
+    #quality .container{position:relative;z-index:2}
+
+    .section-label{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.28em;color:#FFB800;margin-bottom:18px}
+    .section h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;text-transform:uppercase;line-height:0.95;margin-bottom:16px;text-shadow:0 2px 16px rgba(0,0,0,0.65),0 0 40px rgba(255,184,0,0.06);letter-spacing:-0.01em}
+    .section h2 span{color:#FFB800}
+    .section p.lead{font-family:'Inter',sans-serif;font-size:1.05rem;color:rgba(255,255,255,0.62);max-width:620px;margin:0 auto 52px;line-height:1.72}
+    .container{max-width:1100px;margin:0 auto}
+
+    /* ═══════════ PRODUCT CARDS ═══════════ */
+    .card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{background:rgba(8,8,8,0.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.07);padding:40px 24px;text-align:center;transition:border-color 0.3s,transform 0.3s,background 0.3s,box-shadow 0.3s;position:relative;overflow:hidden}
+    .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#FFB800,transparent);opacity:0;transition:opacity 0.3s}
+    .card:hover{border-color:rgba(255,184,0,0.45);background:rgba(255,184,0,0.04);transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+    .card:hover::before{opacity:1}
+    .card .icon{font-size:2.2rem;color:#FFB800;margin-bottom:16px}
+    .card h4{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;color:#fff}
+    .card p{font-family:'Inter',sans-serif;font-size:0.85rem;color:#999;line-height:1.6}
+
+    /* ═══════════ STATS ═══════════ */
+    .stats-row{display:flex;flex-wrap:wrap;justify-content:center;gap:60px;margin-top:20px}
+    .stat h3{font-family:'Barlow Condensed',sans-serif;font-size:3.5rem;font-weight:900;color:#FFB800;line-height:1;text-shadow:0 0 30px rgba(255,184,0,0.15)}
+    .stat p{font-family:'Inter',sans-serif;font-size:0.82rem;color:#999;text-transform:uppercase;letter-spacing:0.1em;margin-top:6px}
+
+    /* ═══════════ QUALITY FEATURES ═══════════ */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px}
+    .feature{text-align:left;padding:32px 28px;background:rgba(8,8,8,0.52);backdrop-filter:blur(4px);border-left:3px solid rgba(255,184,0,0.18);transition:border-color 0.3s,background 0.3s,box-shadow 0.3s}
+    .feature:hover{border-left-color:#FFB800;background:rgba(8,8,8,0.65);box-shadow:0 4px 24px rgba(0,0,0,0.4)}
+    .feature i{color:#FFB800;font-size:1.5rem;margin-bottom:12px}
+    .feature h4{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px}
+    .feature p{font-family:'Inter',sans-serif;font-size:0.88rem;color:#aaa;line-height:1.65}
+
+    /* ═══════════ CONTACT ═══════════ */
+    #contact{position:relative;background:url('img/mining/mining-excavator-belaz.jpg') center/cover no-repeat}
+    #contact::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(8,8,8,0.90) 0%,rgba(8,8,8,0.72) 45%,rgba(8,8,8,0.90) 100%)}
+    #contact .container{position:relative;z-index:2}
+    .contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+    .contact-card{background:rgba(8,8,8,0.62);backdrop-filter:blur(5px);border:1px solid rgba(255,255,255,0.09);padding:40px 24px;text-align:center;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s}
+    .contact-card:hover{border-color:rgba(255,184,0,0.45);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.5)}
+    .contact-card i{font-size:1.8rem;color:#FFB800;margin-bottom:14px}
+    .contact-card h4{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px}
+    .contact-card p,.contact-card a{font-family:'Inter',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.7);text-decoration:none;line-height:1.6}
+    .contact-card a:hover{color:#FFB800}
+    .contact-cta{margin-top:48px}
+    .contact-cta .btn-primary{font-size:1.15rem;padding:18px 48px}
+
+    /* ═══════════ FOOTER ═══════════ */
+    footer{background:#040404;text-align:center;padding:48px 24px 32px;font-family:'Inter',sans-serif;font-size:0.85rem;color:#666;border-top:1px solid #111}
+    footer .logo-img{height:72px;margin-bottom:20px;opacity:0.9}
+    footer a{color:#FFB800;text-decoration:none}
+    footer a:hover{color:#E69500}
+    footer .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin:16px 0}
+    footer .footer-links a{font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:#666}
+    footer .footer-links a:hover{color:#FFB800}
+
+    /* ═══════════ MK LANGUAGE FONT SCALING ═══════════ */
+    .lang-mk .hero-content h1{font-size:clamp(2.2rem,5.8vw,5rem)}
+    .lang-mk .section h2{font-size:clamp(1.8rem,4.2vw,3.2rem)}
+    .lang-mk .hero-subtitle{font-size:clamp(0.85rem,1.5vw,1rem)}
+    .lang-mk .section p.lead{font-size:0.95rem}
+    .lang-mk .card h4{font-size:1.1rem}
+    .lang-mk .card p{font-size:0.8rem}
+    .lang-mk .feature h4{font-size:1.05rem}
+    .lang-mk .feature p{font-size:0.82rem}
+    .lang-mk .nav-links a{font-size:0.85rem}
+    .lang-mk .hero-badge{font-size:0.7rem}
+
+    /* ═══════════ RESPONSIVE ═══════════ */
+    @media(max-width:1024px){
+      .card-grid{grid-template-columns:repeat(2,1fr)}
+      .features-grid{grid-template-columns:1fr}
+      .contact-cards{grid-template-columns:1fr;max-width:400px;margin:40px auto 0}
+    }
+    @media(max-width:768px){
+      #topnav{padding:14px 20px}
+      .nav-links{display:none}
+      .lang-switch{display:none}
+      #mobile-toggle{display:block}
+      .logo-img{height:60px}
+      .section{padding:64px 20px}
+      #hero .hero-content{padding:100px 20px 60px}
+      .hero-buttons{flex-direction:column;align-items:center}
+      .card-grid{grid-template-columns:1fr 1fr;gap:10px}
+      .stats-row{gap:32px}
+      .stat h3{font-size:2.5rem}
+      #trust-bar .brands{gap:16px 24px}
+      #trust-bar .brands span{font-size:0.8rem}
+    }
+    @media(max-width:480px){
+      .card-grid{grid-template-columns:1fr}
+      .stats-row{flex-direction:column;gap:24px}
+      .contact-cards{gap:12px}
+    }
+
+    /* i18n hide class */
+    [data-lang]{display:none}
+    [data-lang].active{display:inline}
+    [data-lang].active-block{display:block}
+    [data-lang].active-flex{display:flex}
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ NAVIGATION ═══════ -->
+  <nav id="topnav">
+    <a href="#hero"><img src="img/logo/logo-main-horizontal.svg" alt="Earth Mining and Construction" class="logo-img" id="main-logo"></a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="#hero" data-i18n="nav.home">Home</a>
+        <a href="#products" data-i18n="nav.products">Products</a>
+        <a href="#quality" data-i18n="nav.about">About</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </div>
+      <div class="lang-switch" id="lang-switch-desktop">
+        <button data-lang-code="en" class="active">EN</button>
+        <button data-lang-code="mk">МК</button>
+      </div>
+      <a href="#contact" class="btn-quote" data-i18n="nav.quote">GET A QUOTE</a>
+      <button id="mobile-toggle" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu">
+    <button id="mobile-close">✕</button>
+    <a href="#hero" data-close-mobile data-i18n="nav.home">Home</a>
+    <a href="#products" data-close-mobile data-i18n="nav.products">Products</a>
+    <a href="#quality" data-close-mobile data-i18n="nav.about">About</a>
+    <a href="#contact" data-close-mobile data-i18n="nav.contact">Contact</a>
+    <div class="lang-switch-mobile">
+      <button data-lang-code="en" class="active">EN</button>
+      <button data-lang-code="mk">МК</button>
+    </div>
+    <a href="#contact" class="btn-quote" data-close-mobile data-i18n="nav.quote">GET A QUOTE</a>
+  </div>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section id="hero">
+    <canvas id="dust-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge" data-i18n="hero.badge">PREMIUM OEM &amp; AFTERMARKET PARTS</div>
+      <h1><span data-i18n="hero.headline1">ENGINEERED PARTS</span><br><span data-i18n="hero.headline2">FOR EVERY MACHINE</span></h1>
+      <p class="hero-subtitle" data-i18n="hero.sub">Premium OEM &amp; Aftermarket Parts &nbsp;|&nbsp; Fast Worldwide Delivery &nbsp;|&nbsp; Competitive Prices</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn-primary"><i class="fas fa-file-invoice-dollar"></i> <span data-i18n="hero.cta">GET A QUOTE</span></a>
+        <a href="#products" class="btn-outline"><i class="fas fa-cogs"></i> <span data-i18n="hero.products">OUR PRODUCTS</span></a>
+      </div>
+    </div>
+    <div class="scroll-indicator"><span></span></div>
+  </section>
+
+  <!-- ═══════ TRUST BAR ═══════ -->
+  <div id="trust-bar">
+    <div class="trust-label" data-i18n="trust.label">COMPATIBLE WITH</div>
+    <div class="brands">
+      <span>CAT</span><span>KOMATSU</span><span>VOLVO</span><span>HITACHI</span>
+      <span>JOHN DEERE</span><span>CASE</span><span>TEREX</span>
+      <span>+ more</span>
+    </div>
+  </div>
+
+  <!-- ═══════ PRODUCTS ═══════ -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-label" data-i18n="products.label">OUR PRODUCTS</div>
+      <h2><span data-i18n="products.headline1">ENGINEERED PARTS FOR</span><br><span data-i18n="products.headline2">EVERY MACHINE</span></h2>
+      <p class="lead" data-i18n="products.lead">First-class genuine and OEM-quality components trusted by heavy equipment operators worldwide. Built to perform. Built to last.</p>
+      <div class="card-grid">
+        <div class="card">
+          <div class="icon"><i class="fas fa-engine"></i></div>
+          <h4 data-i18n="products.card1.title">Engine Parts</h4>
+          <p data-i18n="products.card1.desc">Overhaul kits, pistons, turbos, cylinder heads for CAT, John Deere, and Volvo engines</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-oil-can"></i></div>
+          <h4 data-i18n="products.card2.title">Hydraulic Parts</h4>
+          <p data-i18n="products.card2.desc">Pumps, motors, cylinders, seal kits — pressure-tested and ready for the toughest jobs</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-mountain"></i></div>
+          <h4 data-i18n="products.card3.title">Mining Parts</h4>
+          <p data-i18n="products.card3.desc">Swing bearings, GET systems, haul truck components for mining and quarry equipment</p>
+        </div>
+        <div class="card">
+          <div class="icon"><i class="fas fa-cog"></i></div>
+          <h4 data-i18n="products.card4.title">Undercarriage</h4>
+          <p data-i18n="products.card4.desc">Track chains, rollers, idlers, final drives for bulldozers, excavators, and drilling rigs</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ QUALITY ═══════ -->
+  <section class="section" id="quality">
+    <div class="container">
+      <div class="section-label" data-i18n="quality.label">WHY CHOOSE US</div>
+      <h2><span data-i18n="quality.headline1">BUILT FOR</span><br><span data-i18n="quality.headline2">RELIABILITY</span></h2>
+      <p class="lead" data-i18n="quality.lead">OEM-grade quality. Up to 40% below dealer pricing. ISO-certified manufacturing with full traceability. Ships worldwide — most orders within 24 hours.</p>
+      <div class="features-grid">
+        <div class="feature"><i class="fas fa-certificate"></i><h4 data-i18n="quality.f1.title">ISO Certified</h4><p data-i18n="quality.f1.desc">All parts manufactured under strict ISO quality management systems with full material traceability.</p></div>
+        <div class="feature"><i class="fas fa-truck-fast"></i><h4 data-i18n="quality.f2.title">Fast Global Shipping</h4><p data-i18n="quality.f2.desc">Most orders dispatched within 24 hours. Reliable logistics partners serving 60+ countries worldwide.</p></div>
+        <div class="feature"><i class="fas fa-tags"></i><h4 data-i18n="quality.f3.title">Competitive Pricing</h4><p data-i18n="quality.f3.desc">Up to 40% below dealer prices without compromising on quality or warranty coverage.</p></div>
+        <div class="feature"><i class="fas fa-headset"></i><h4 data-i18n="quality.f4.title">Expert Support</h4><p data-i18n="quality.f4.desc">Our technical team responds within 2 hours. For urgent breakdowns, we're available by phone.</p></div>
+        <div class="feature"><i class="fas fa-microscope"></i><h4 data-i18n="quality.f5.title">Pressure Tested</h4><p data-i18n="quality.f5.desc">Every hydraulic component undergoes rigorous pressure testing before it leaves our facility.</p></div>
+        <div class="feature"><i class="fas fa-handshake"></i><h4 data-i18n="quality.f6.title">Trusted Partner</h4><p data-i18n="quality.f6.desc">Long-term relationships with mines, quarries, and heavy equipment operators across the globe.</p></div>
+      </div>
+      <div class="stats-row" style="margin-top:60px">
+        <div class="stat"><h3>10K+</h3><p data-i18n="quality.stat1">Parts in Stock</p></div>
+        <div class="stat"><h3>60+</h3><p data-i18n="quality.stat2">Countries Served</p></div>
+        <div class="stat"><h3>24h</h3><p data-i18n="quality.stat3">Average Dispatch</p></div>
+        <div class="stat"><h3>40%</h3><p data-i18n="quality.stat4">Below Dealer Price</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CONTACT ═══════ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-label" data-i18n="contact.label">GET IN TOUCH</div>
+      <h2><span data-i18n="contact.headline1">WE LOOK FORWARD TO</span><br><span data-i18n="contact.headline2">WORKING WITH YOU</span></h2>
+      <p class="lead" data-i18n="contact.lead">Tell us what you need. Our team responds within 2 hours. For urgent breakdowns, call us directly.</p>
+      <div class="contact-cards">
+        <div class="contact-card"><i class="fas fa-phone-volume"></i><h4 data-i18n="contact.c1">Call Us</h4><a href="tel:+38971229026">+389 71 229 026</a></div>
+        <div class="contact-card"><i class="fas fa-envelope"></i><h4 data-i18n="contact.c2">Email</h4><a href="mailto:sales@energycontrol.com.mk">sales@energycontrol.com.mk</a></div>
+        <div class="contact-card"><i class="fas fa-location-dot"></i><h4 data-i18n="contact.c3">Location</h4><p>Kairska 6, 1000 Skopje<br>Macedonia</p></div>
+      </div>
+      <div class="contact-cta">
+        <a href="mailto:sales@energycontrol.com.mk" class="btn-primary"><i class="fas fa-paper-plane"></i> <span data-i18n="contact.cta">REQUEST A QUOTE</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <img src="img/logo/logo-main-horizontal.svg" alt="Earth Mining and Construction" class="logo-img" id="footer-logo">
+    <div class="footer-links">
+      <a href="#hero" data-i18n="nav.home">Home</a>
+      <a href="#products" data-i18n="nav.products">Products</a>
+      <a href="#quality" data-i18n="nav.about">About</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+    <p>Kairska 6, 1000 Skopje, Macedonia</p>
+    <p style="margin-top:8px"><a href="tel:+38971229026">+389 71 229 026</a> &nbsp;|&nbsp; <a href="mailto:sales@energycontrol.com.mk">sales@energycontrol.com.mk</a></p>
+    <p style="margin-top:20px;color:#444">&copy; 2024 Earth Mining and Construction Equipment. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ═══════════ TRANSLATIONS ═══════════
+    const i18n = {
+      en: {
+        'nav.home':'Home','nav.products':'Products','nav.about':'About','nav.contact':'Contact','nav.quote':'GET A QUOTE',
+        'hero.badge':'PREMIUM OEM & AFTERMARKET PARTS',
+        'hero.headline1':'ENGINEERED PARTS','hero.headline2':'FOR EVERY MACHINE',
+        'hero.sub':'Premium OEM & Aftermarket Parts &nbsp;|&nbsp; Fast Worldwide Delivery &nbsp;|&nbsp; Competitive Prices',
+        'hero.cta':'GET A QUOTE','hero.products':'OUR PRODUCTS',
+        'trust.label':'COMPATIBLE WITH',
+        'products.label':'OUR PRODUCTS','products.headline1':'ENGINEERED PARTS FOR','products.headline2':'EVERY MACHINE',
+        'products.lead':'First-class genuine and OEM-quality components trusted by heavy equipment operators worldwide. Built to perform. Built to last.',
+        'products.card1.title':'Engine Parts','products.card1.desc':'Overhaul kits, pistons, turbos, cylinder heads for CAT, John Deere, and Volvo engines',
+        'products.card2.title':'Hydraulic Parts','products.card2.desc':'Pumps, motors, cylinders, seal kits — pressure-tested and ready for the toughest jobs',
+        'products.card3.title':'Mining Parts','products.card3.desc':'Swing bearings, GET systems, haul truck components for mining and quarry equipment',
+        'products.card4.title':'Undercarriage','products.card4.desc':'Track chains, rollers, idlers, final drives for bulldozers, excavators, and drilling rigs',
+        'quality.label':'WHY CHOOSE US','quality.headline1':'BUILT FOR','quality.headline2':'RELIABILITY',
+        'quality.lead':'OEM-grade quality. Up to 40% below dealer pricing. ISO-certified manufacturing with full traceability. Ships worldwide — most orders within 24 hours.',
+        'quality.f1.title':'ISO Certified','quality.f1.desc':'All parts manufactured under strict ISO quality management systems with full material traceability.',
+        'quality.f2.title':'Fast Global Shipping','quality.f2.desc':'Most orders dispatched within 24 hours. Reliable logistics partners serving 60+ countries worldwide.',
+        'quality.f3.title':'Competitive Pricing','quality.f3.desc':'Up to 40% below dealer prices without compromising on quality or warranty coverage.',
+        'quality.f4.title':'Expert Support','quality.f4.desc':'Our technical team responds within 2 hours. For urgent breakdowns, we\'re available by phone.',
+        'quality.f5.title':'Pressure Tested','quality.f5.desc':'Every hydraulic component undergoes rigorous pressure testing before it leaves our facility.',
+        'quality.f6.title':'Trusted Partner','quality.f6.desc':'Long-term relationships with mines, quarries, and heavy equipment operators across the globe.',
+        'quality.stat1':'Parts in Stock','quality.stat2':'Countries Served','quality.stat3':'Average Dispatch','quality.stat4':'Below Dealer Price',
+        'contact.label':'GET IN TOUCH','contact.headline1':'WE LOOK FORWARD TO','contact.headline2':'WORKING WITH YOU',
+        'contact.lead':'Tell us what you need. Our team responds within 2 hours. For urgent breakdowns, call us directly.',
+        'contact.c1':'Call Us','contact.c2':'Email','contact.c3':'Location','contact.cta':'REQUEST A QUOTE',
+      },
+      mk: {
+        'nav.home':'Почетна','nav.products':'Производи','nav.about':'За Нас','nav.contact':'Контакт','nav.quote':'ПОБАРАЈ ПОНУДА',
+        'hero.badge':'ПРЕМИУМ ОЕМ И РЕЗЕРВНИ ДЕЛОВИ',
+        'hero.headline1':'КВАЛИТЕТНИ ДЕЛОВИ','hero.headline2':'ЗА СЕКОЈА МАШИНА',
+        'hero.sub':'Премиум ОЕМ и резервни делови &nbsp;|&nbsp; Брза испорака низ светот &nbsp;|&nbsp; Конкурентни цени',
+        'hero.cta':'ПОБАРАЈ ПОНУДА','hero.products':'НАШИТЕ ПРОИЗВОДИ',
+        'trust.label':'КОМПАТИБИЛНО СО',
+        'products.label':'НАШИТЕ ПРОИЗВОДИ','products.headline1':'КВАЛИТЕТНИ ДЕЛОВИ ЗА','products.headline2':'СЕКОЈА МАШИНА',
+        'products.lead':'Врвни оригинални и ОЕМ квалитетни компоненти на кои им веруваат оператори на тешка опрема низ целиот свет. Изградени да траат.',
+        'products.card1.title':'Делови за Мотор','products.card1.desc':'Комплети за ремонт, клипови, турбо полначи, глави на цилиндри за CAT, John Deere и Volvo мотори',
+        'products.card2.title':'Хидраулични Делови','products.card2.desc':'Пумпи, мотори, цилиндри, комплети за заптивки — тестирани под притисок за најтешките работни услови',
+        'products.card3.title':'Рударски Делови','products.card3.desc':'Завртни лежишта, GET системи, компоненти за транспортни камиони за рударство и каменоломи',
+        'products.card4.title':'Подвозје','products.card4.desc':'Гасенични ланци, ролки, тркалца, финални погони за булдожери, багери и машини за дупчење',
+        'quality.label':'ЗОШТО ДА НЕ ИЗБЕРЕТЕ НАС','quality.headline1':'ГРАДЕНИ ЗА','quality.headline2':'СИГУРНОСТ',
+        'quality.lead':'ОЕМ квалитет. До 40% пониски цени од дилерските. ИСО сертифицирано производство со целосна следливост. Испорака низ целиот свет — повеќето нарачки во рок од 24 часа.',
+        'quality.f1.title':'ИСО Сертифициран','quality.f1.desc':'Сите делови се произведени според строги ИСО системи за управување со квалитет со целосна следливост на материјалите.',
+        'quality.f2.title':'Брза Глобална Испорака','quality.f2.desc':'Повеќето нарачки се испраќаат во рок од 24 часа. Сигурни логистички партнери кои опслужуваат 60+ земји низ светот.',
+        'quality.f3.title':'Конкурентни Цени','quality.f3.desc':'До 40% пониски од дилерските цени без компромис во квалитетот или гаранциското покритие.',
+        'quality.f4.title':'Стручна Поддршка','quality.f4.desc':'Нашиот технички тим одговара во рок од 2 часа. За итни дефекти, достапни сме по телефон.',
+        'quality.f5.title':'Тестирано Под Притисок','quality.f5.desc':'Секоја хидраулична компонента поминува низ ригорозно тестирање под притисок пред да го напушти нашиот објект.',
+        'quality.f6.title':'Доверлив Партнер','quality.f6.desc':'Долгорочни односи со рудници, каменоломи и оператори на тешка опрема ширум светот.',
+        'quality.stat1':'Делови на Залиха','quality.stat2':'Опслужени Земји','quality.stat3':'Просечна Испорака','quality.stat4':'Под Дилерска Цена',
+        'contact.label':'СТАПЕТЕ ВО КОНТАКТ','contact.headline1':'СО НЕСТРПЕНИЕ ОЧЕКУВАМЕ','contact.headline2':'ДА СОРАБОТУВАМЕ СО ВАС',
+        'contact.lead':'Кажете ни што ви треба. Нашиот тим одговара во рок од 2 часа. За итни дефекти, јавете ни се директно.',
+        'contact.c1':'Повикајте Не','contact.c2':'Е-пошта','contact.c3':'Локација','contact.cta':'ПОБАРАЈ ПОНУДА',
+      }
+    };
+
+    const LOGOS = {
+      en: 'img/logo/logo-main-horizontal.svg',
+      mk: 'img/logo/logo-mk.svg'
+    };
+
+    let currentLang = localStorage.getItem('emc-lang') || 'en';
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('emc-lang', lang);
+
+      // Update all i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (i18n[lang] && i18n[lang][key]) {
+          el.innerHTML = i18n[lang][key];
+        }
+      });
+
+      // Update logo
+      document.getElementById('main-logo').src = LOGOS[lang];
+      document.getElementById('footer-logo').src = LOGOS[lang];
+
+      // Update lang buttons
+      document.querySelectorAll('[data-lang-code]').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang-code') === lang);
+      });
+
+      // Update HTML lang attr & body class
+      document.documentElement.lang = lang;
+      document.body.classList.toggle('lang-mk', lang === 'mk');
+
+      // Update title / meta
+      if (lang === 'mk') {
+        document.title = 'Земја Минирање и Градежна Опрема — Премиум Резервни Делови';
+        document.querySelector('meta[name="description"]').setAttribute('content',
+          'Земја Минирање и Градежна Опрема — Премиум ОЕМ и резервни делови за тешка механизација. Испорака низ светот, конкурентни цени.');
+      } else {
+        document.title = 'Earth Mining and Construction Equipment — Premium Spare Parts';
+        document.querySelector('meta[name="description"]').setAttribute('content',
+          'Earth Mining and Construction Equipment — Premium OEM & aftermarket spare parts for heavy machinery. Worldwide delivery, competitive prices.');
+      }
+    }
+
+    // Language switch clicks
+    document.querySelectorAll('[data-lang-code]').forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.getAttribute('data-lang-code')));
+    });
+
+    // Init
+    setLang(currentLang);
+
+    // ═══════════ MOBILE MENU ═══════════
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+    mobileToggle.addEventListener('click',()=>mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+    document.querySelectorAll('[data-close-mobile]').forEach(el=>{
+      el.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+    });
+
+    // Nav scroll
+    window.addEventListener('scroll',()=>{
+      document.getElementById('topnav').classList.toggle('scrolled',window.scrollY>50);
+    });
+
+    // Dust particles
+    const canvas = document.getElementById('dust-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles=[],animId;
+    function resizeCanvas(){canvas.width=canvas.parentElement.offsetWidth;canvas.height=canvas.parentElement.offsetHeight}
+    resizeCanvas();window.addEventListener('resize',resizeCanvas);
+    class Particle{constructor(){this.reset();this.y=Math.random()*canvas.height}
+      reset(){this.x=Math.random()*canvas.width;this.y=-10;this.size=Math.random()*2+0.5;this.speedY=Math.random()*0.4+0.1;this.speedX=(Math.random()-0.5)*0.4;this.opacity=Math.random()*0.3+0.05}
+      update(){this.y+=this.speedY;this.x+=this.speedX;if(this.y>canvas.height+10)this.reset();if(this.x<-10)this.x=canvas.width+10;if(this.x>canvas.width+10)this.x=-10}
+      draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`rgba(255,184,0,${this.opacity})`;ctx.fill()}}
+    function initParticles(c=80){particles=[];for(let i=0;i<c;i++)particles.push(new Particle())}
+    function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});animId=requestAnimationFrame(animate)}
+    const hero=document.getElementById('hero');
+    new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){if(!animId){if(!particles.length)initParticles();animate()}}else{if(animId){cancelAnimationFrame(animId);animId=null}}})},{threshold:0.1}).observe(hero);
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',function(e){
+        const t=document.querySelector(this.getAttribute('href'));
+        if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});mobileMenu.classList.remove('open')}
+      });
+    });
+  </script>
+</body>
+</html>
