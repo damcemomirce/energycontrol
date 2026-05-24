@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products Catalog — Earth Mining and Construction Equipment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',sans-serif;
+      background:#080808;
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    /* ═══════════ NAV ═══════════ */
+    #topnav{
+      position:sticky;top:0;z-index:100;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 48px;
+      background:rgba(8,8,8,0.94);
+      backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,184,0,0.08);
+    }
+    .logo-img{height:100px;width:auto}
+    .nav-links{display:flex;align-items:center;gap:32px}
+    .nav-links a{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.9rem;font-weight:600;text-transform:uppercase;
+      letter-spacing:0.1em;color:rgba(255,255,255,0.7);text-decoration:none;
+      transition:color 0.3s;
+    }
+    .nav-links a:hover,.nav-links a.active{color:#FFB800}
+    .lang-switch{display:flex;border:1px solid rgba(255,184,0,0.3);border-radius:4px;overflow:hidden}
+    .lang-switch button{background:transparent;border:none;color:rgba(255,255,255,0.55);font-family:'Inter',sans-serif;font-size:0.78rem;font-weight:600;padding:6px 12px;cursor:pointer}
+    .lang-switch button.active{background:#FFB800;color:#080808}
+    #mobile-toggle{display:none;background:none;border:none;color:#FFB800;font-size:1.5rem;cursor:pointer}
+
+    /* ═══════════ PAGE HEADER ═══════════ */
+    .page-header{
+      background:linear-gradient(180deg,rgba(8,8,8,0.6),rgba(8,8,8,0.85)),
+        url('img/mining/mining-excavator-belaz.jpg') center/cover no-repeat;
+      padding:64px 48px 48px;text-align:center;
+    }
+    .page-header h1{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:clamp(2rem,5vw,3.8rem);font-weight:900;
+      text-transform:uppercase;letter-spacing:0.02em;margin-bottom:8px;
+    }
+    .page-header h1 span{color:#FFB800}
+    .page-header p{
+      font-size:1rem;color:rgba(255,255,255,0.55);max-width:500px;margin:0 auto;
+    }
+
+    /* ═══════════ LAYOUT ═══════════ */
+    .catalog-layout{
+      display:grid;grid-template-columns:260px 1fr;
+      max-width:1320px;margin:0 auto;padding:32px 48px 64px;gap:32px;
+    }
+
+    /* ═══════════ FILTERS SIDEBAR ═══════════ */
+    .filters-sidebar{
+      position:sticky;top:100px;align-self:start;
+    }
+    .filter-toggle-mobile{
+      display:none;width:100%;background:#0D0D0D;border:1px solid rgba(255,255,255,0.1);
+      color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:0.08em;padding:14px 20px;cursor:pointer;
+      text-align:left;
+    }
+    .filter-group{margin-bottom:24px}
+    .filter-group h4{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.95rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:0.08em;color:#FFB800;margin-bottom:12px;
+    }
+    .filter-group label{
+      display:flex;align-items:center;gap:10px;padding:6px 0;
+      font-size:0.85rem;color:rgba(255,255,255,0.65);cursor:pointer;
+      transition:color 0.2s;
+    }
+    .filter-group label:hover{color:#fff}
+    .filter-group input[type="checkbox"]{
+      accent-color:#FFB800;width:16px;height:16px;cursor:pointer;
+    }
+    .filter-group .count{
+      font-size:0.75rem;color:#555;margin-left:auto;
+    }
+
+    /* ═══════════ SEARCH BAR ═══════════ */
+    .search-bar{
+      display:flex;gap:0;margin-bottom:24px;
+      background:#0D0D0D;border:1px solid rgba(255,255,255,0.1);
+      border-radius:4px;overflow:hidden;
+      transition:border-color 0.3s;
+    }
+    .search-bar:focus-within{border-color:#FFB800}
+    .search-bar input{
+      flex:1;background:transparent;border:none;padding:15px 20px;
+      font-family:'Inter',sans-serif;font-size:0.95rem;color:#fff;outline:none;
+    }
+    .search-bar input::placeholder{color:#555}
+    .search-bar button{
+      background:#FFB800;color:#080808;border:none;padding:0 24px;
+      font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;
+      transition:background 0.3s;
+    }
+    .search-bar button:hover{background:#E69500}
+
+    /* ═══════════ RESULTS HEADER ═══════════ */
+    .results-header{
+      display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;
+    }
+    .results-header span{font-size:0.82rem;color:#666}
+    .results-header select{
+      background:#0D0D0D;border:1px solid rgba(255,255,255,0.1);
+      color:#ccc;padding:8px 14px;font-size:0.82rem;border-radius:4px;
+      cursor:pointer;
+    }
+
+    /* ═══════════ PRODUCT GRID ═══════════ */
+    .product-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+    }
+    .product-card{
+      background:#0D0D0D;border:1px solid rgba(255,255,255,0.06);
+      padding:28px 24px;display:flex;flex-direction:column;
+      transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;
+      position:relative;
+    }
+    .product-card::before{
+      content:'';position:absolute;top:0;left:0;right:0;height:2px;
+      background:linear-gradient(90deg,transparent,#FFB800,transparent);opacity:0;
+      transition:opacity 0.3s;
+    }
+    .product-card:hover{
+      border-color:rgba(255,184,0,0.3);
+      transform:translateY(-4px);
+      box-shadow:0 8px 32px rgba(0,0,0,0.4);
+    }
+    .product-card:hover::before{opacity:1}
+    .product-part{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.82rem;font-weight:700;color:#FFB800;
+      text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;
+    }
+    .product-name{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1.25rem;font-weight:700;text-transform:uppercase;
+      letter-spacing:0.03em;line-height:1.2;margin-bottom:8px;
+    }
+    .product-desc{
+      font-size:0.82rem;color:#888;line-height:1.55;margin-bottom:14px;flex:1;
+    }
+    .product-meta{
+      display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;
+    }
+    .product-tag{
+      font-size:0.68rem;font-weight:500;color:#777;
+      background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);
+      padding:3px 10px;border-radius:2px;
+    }
+    .product-bottom{
+      display:flex;justify-content:space-between;align-items:center;
+      border-top:1px solid rgba(255,255,255,0.06);padding-top:14px;
+    }
+    .product-price{
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1.1rem;font-weight:700;color:#FFB800;
+    }
+    .product-price small{font-size:0.7rem;color:#666;font-weight:400}
+    .btn-quote-sm{
+      background:transparent;color:#FFB800;border:1px solid rgba(255,184,0,0.3);
+      font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:0.06em;padding:7px 16px;cursor:pointer;
+      text-decoration:none;transition:background 0.3s,color 0.3s;
+    }
+    .btn-quote-sm:hover{background:#FFB800;color:#080808}
+
+    /* ═══════════ NO RESULTS ═══════════ */
+    .no-results{
+      text-align:center;padding:64px 24px;grid-column:1/-1;
+    }
+    .no-results i{font-size:3rem;color:#333;margin-bottom:16px}
+    .no-results h3{font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;color:#666;text-transform:uppercase;margin-bottom:8px}
+    .no-results p{font-size:0.9rem;color:#555}
+
+    /* ═══════════ FOOTER ═══════════ */
+    footer{
+      background:#040404;text-align:center;padding:40px 24px 28px;
+      font-size:0.82rem;color:#555;border-top:1px solid #111;
+    }
+    footer a{color:#FFB800;text-decoration:none}
+
+    /* ═══════════ RESPONSIVE ═══════════ */
+    @media(max-width:1024px){
+      .product-grid{grid-template-columns:repeat(2,1fr)}
+      .catalog-layout{padding:24px 32px 48px}
+    }
+    @media(max-width:768px){
+      #topnav{padding:12px 16px}
+      .nav-links{display:none}
+      #mobile-toggle{display:block}
+      .logo-img{height:56px}
+      .lang-switch{display:none}
+
+      .page-header{padding:48px 16px 36px}
+      .catalog-layout{grid-template-columns:1fr;padding:20px 16px 40px;gap:0}
+      .filters-sidebar{position:static;margin-bottom:20px}
+      .filters-sidebar .filters-inner{display:none}
+      .filters-sidebar.open .filters-inner{display:block}
+      .filter-toggle-mobile{display:block}
+      .product-grid{grid-template-columns:1fr;gap:10px}
+      .results-header{flex-direction:column;gap:10px;align-items:flex-start}
+      .product-card{padding:22px 18px}
+    }
+    @media(max-width:480px){
+      .search-bar input{font-size:0.85rem;padding:12px 14px}
+      .search-bar button{padding:0 16px;font-size:0.85rem}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ NAV ═══════ -->
+  <nav id="topnav">
+    <a href="index.html"><img src="img/logo/logo-main-horizontal.svg" alt="Earth Mining and Construction" class="logo-img" id="main-logo"></a>
+    <div class="nav-links">
+      <a href="index.html" data-i18n="nav.home">Home</a>
+      <a href="catalog.html" class="active" data-i18n="nav.catalog">Products Catalog</a>
+      <a href="index.html#quality" data-i18n="nav.about">About</a>
+      <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="lang-switch">
+      <button data-lang-code="en" class="active">EN</button>
+      <button data-lang-code="mk">МК</button>
+    </div>
+    <button id="mobile-toggle">☰</button>
+  </nav>
+
+  <!-- ═══════ PAGE HEADER ═══════ -->
+  <section class="page-header">
+    <h1><span data-i18n="header.line1">PRODUCTS</span> <span data-i18n="header.line2">CATALOG</span></h1>
+    <p data-i18n="header.sub">Browse our complete range of premium OEM and aftermarket parts</p>
+  </section>
+
+  <!-- ═══════ CATALOG ═══════ -->
+  <div class="catalog-layout">
+    <!-- SIDEBAR FILTERS -->
+    <aside class="filters-sidebar" id="filters-sidebar">
+      <button class="filter-toggle-mobile" id="filter-toggle" data-i18n="filters.toggle">☰ Filters</button>
+      <div class="filters-inner">
+        <div class="filter-group">
+          <h4 data-i18n="filters.brand">Machine Brand</h4>
+          <label><input type="checkbox" class="filter-check" data-filter="brand" value="CAT" checked><span>CAT / Caterpillar</span><span class="count">12</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="brand" value="Komatsu" checked><span>Komatsu</span><span class="count">8</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="brand" value="Volvo" checked><span>Volvo</span><span class="count">6</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="brand" value="Hitachi" checked><span>Hitachi</span><span class="count">5</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="brand" value="John Deere"><span>John Deere</span><span class="count">4</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="brand" value="Case"><span>Case CNH</span><span class="count">3</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="brand" value="Terex"><span>Terex</span><span class="count">2</span></label>
+        </div>
+        <div class="filter-group">
+          <h4 data-i18n="filters.category">Category</h4>
+          <label><input type="checkbox" class="filter-check" data-filter="category" value="Engine" checked><span data-i18n="cat.engine">Engine Parts</span><span class="count">10</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="category" value="Hydraulic" checked><span data-i18n="cat.hydraulic">Hydraulic Parts</span><span class="count">9</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="category" value="Mining" checked><span data-i18n="cat.mining">Mining Parts</span><span class="count">7</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="category" value="Undercarriage" checked><span data-i18n="cat.undercarriage">Undercarriage</span><span class="count">8</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="category" value="Electrical"><span data-i18n="cat.electrical">Electrical</span><span class="count">4</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="category" value="Filters"><span data-i18n="cat.filters">Filters</span><span class="count">6</span></label>
+        </div>
+        <div class="filter-group">
+          <h4 data-i18n="filters.price">Price Range</h4>
+          <label><input type="checkbox" class="filter-check" data-filter="price" value="budget"><span data-i18n="price.budget">Budget ($100–$500)</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="price" value="mid"><span data-i18n="price.mid">Mid-Range ($500–$2,000)</span></label>
+          <label><input type="checkbox" class="filter-check" data-filter="price" value="premium"><span data-i18n="price.premium">Premium ($2,000+)</span></label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- PRODUCT LISTING -->
+    <main>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search by Part Number or Machine Model…" data-i18n-placeholder="search.placeholder">
+        <button id="search-btn"><i class="fas fa-search"></i> <span data-i18n="search.btn">Search</span></button>
+      </div>
+
+      <div class="results-header">
+        <span id="results-count" data-i18n="results.showing">Showing 34 products</span>
+        <select id="sort-select">
+          <option value="default" data-i18n="sort.default">Sort: Default</option>
+          <option value="name" data-i18n="sort.name">Sort: Name A–Z</option>
+          <option value="price-asc" data-i18n="sort.price-asc">Sort: Price Low–High</option>
+          <option value="price-desc" data-i18n="sort.price-desc">Sort: Price High–Low</option>
+        </select>
+      </div>
+
+      <div class="product-grid" id="product-grid"></div>
+    </main>
+  </div>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <p>&copy; 2024 Earth Mining and Construction Equipment. All rights reserved.</p>
+    <p style="margin-top:6px"><a href="index.html" data-i18n="footer.back">← Back to Homepage</a></p>
+  </footer>
+
+  <script>
+    // ═══════════ PRODUCT DATA ═══════════
+    const products = [
+      {part:'CAT 352-0211',name:'Radiator Assembly — CAT 336D',desc:'Heavy-duty aluminum radiator assembly for CAT 336D excavators. OEM-grade construction.',brands:['CAT'],category:'Engine',price:'$420–580',priceTier:'mid'},
+      {part:'KOM 209-62-74110',name:'Final Drive — Komatsu PC200',desc:'Complete final drive unit for Komatsu PC200-8 excavators. 100% tested.',brands:['Komatsu'],category:'Undercarriage',price:'$1,850–2,200',priceTier:'premium'},
+      {part:'VOL VO15045268',name:'Hydraulic Pump — Volvo L150H',desc:'Main hydraulic pump assembly for Volvo L150H wheel loaders. Pressure tested.',brands:['Volvo'],category:'Hydraulic',price:'$890–1,250',priceTier:'mid'},
+      {part:'CAT 6I-4662',name:'Cylinder Head — CAT 3406E',desc:'Complete cylinder head for CAT 3406E diesel engines. With valves and seats.',brands:['CAT'],category:'Engine',price:'$1,100–1,450',priceTier:'premium'},
+      {part:'HIT 4637458',name:'Swing Bearing — Hitachi ZX470',desc:'Swing bearing / slewing ring for Hitachi ZX470 mining excavators. Heavy duty.',brands:['Hitachi'],category:'Mining',price:'$2,400–3,100',priceTier:'premium'},
+      {part:'CAT 8E-9724',name:'GET Tooth — CAT 390F',desc:'Ground engaging tool tooth for CAT 390F buckets. Forged alloy steel.',brands:['CAT'],category:'Mining',price:'$85–120',priceTier:'budget'},
+      {part:'JD R123456',name:'Turbocharger — John Deere 6068',desc:'Complete turbocharger assembly for John Deere 6068 PowerTech engines.',brands:['John Deere'],category:'Engine',price:'$580–750',priceTier:'mid'},
+      {part:'KOM 20Y-27-21180',name:'Track Chain — Komatsu D155',desc:'Complete track chain assembly for Komatsu D155 bulldozers. Sealed & lubricated.',brands:['Komatsu'],category:'Undercarriage',price:'$2,100–2,800',priceTier:'premium'},
+      {part:'VOL VO11103427',name:'Seal Kit — Volvo EC290',desc:'Complete hydraulic cylinder seal kit for Volvo EC290 excavator boom cylinder.',brands:['Volvo'],category:'Hydraulic',price:'$120–180',priceTier:'budget'},
+      {part:'CAT 8E-8314',name:'Bucket Lip Shroud — CAT 374',desc:'Heavy-duty lip shroud for CAT 374 excavator buckets. Abrasion resistant.',brands:['CAT'],category:'Mining',price:'$210–280',priceTier:'budget'},
+      {part:'KOM 708-7R-14530',name:'Radiator — Komatsu HD785',desc:'Heavy-duty radiator core for Komatsu HD785 dump trucks. Copper-brass construction.',brands:['Komatsu'],category:'Engine',price:'$1,550–2,100',priceTier:'premium'},
+      {part:'HIT 4289472',name:'Idler Assembly — Hitachi ZX350',desc:'Front idler complete for Hitachi ZX350 excavator undercarriage.',brands:['Hitachi'],category:'Undercarriage',price:'$680–920',priceTier:'mid'},
+      {part:'TER 9261653',name:'Brake Valve — Terex TR60',desc:'Service brake valve for Terex TR60 articulated dump trucks.',brands:['Terex'],category:'Hydraulic',price:'$340–480',priceTier:'mid'},
+      {part:'CAS 87639568',name:'Water Pump — Case 580N',desc:'Heavy-duty water pump assembly for Case 580N backhoe loaders.',brands:['Case'],category:'Engine',price:'$155–220',priceTier:'budget'},
+      {part:'CAT 9T-7435',name:'Track Roller — CAT D6T',desc:'Single flange track roller for CAT D6T bulldozers. Sealed bearing.',brands:['CAT'],category:'Undercarriage',price:'$280–360',priceTier:'budget'},
+      {part:'VOL VO20458024',name:'Lift Cylinder — Volvo A40G',desc:'Hoist cylinder for Volvo A40G articulated dump truck body.',brands:['Volvo'],category:'Hydraulic',price:'$1,350–1,800',priceTier:'premium'},
+      {part:'KOM 20Y-60-21470',name:'Transmission Filter — Komatsu WA600',desc:'High-efficiency transmission filter for Komatsu WA600 wheel loaders.',brands:['Komatsu'],category:'Filters',price:'$45–68',priceTier:'budget'},
+      {part:'HIT 9135468',name:'Starter Motor — Hitachi ZX200',desc:'24V heavy-duty starter motor for Hitachi ZX200-5G excavators.',brands:['Hitachi'],category:'Electrical',price:'$280–380',priceTier:'mid'},
+      {part:'JD AT338476',name:'Injector — John Deere 6090',desc:'Fuel injector assembly for John Deere 6090HF engines. Remanufactured.',brands:['John Deere'],category:'Engine',price:'$190–260',priceTier:'budget'},
+      {part:'CAT 6I-2501',name:'Piston Kit — CAT C15',desc:'Complete piston and ring kit for CAT C15 ACERT diesel engines.',brands:['CAT'],category:'Engine',price:'$480–620',priceTier:'mid'},
+      {part:'KAS 4439285',name:'Bucket Teeth Set — Komatsu PC400',desc:'Complete set of 5 bucket teeth with pins for PC400 excavator.',brands:['Komatsu'],category:'Mining',price:'$320–440',priceTier:'mid'},
+      {part:'VOL VO21645033',name:'Fuel Filter — Volvo EC480',desc:'OEM-spec fuel filter element for Volvo EC480 excavators. 500hr interval.',brands:['Volvo'],category:'Filters',price:'$28–42',priceTier:'budget'},
+      {part:'CAS 47826590',name:'Hydraulic Pump — Case CX350D',nameMK:'Хидраулична Пумпа — Case CX350D',desc:'Main hydraulic pump for Case CX350D excavators. Regulator type.',brands:['Case'],category:'Hydraulic',price:'$1,050–1,400',priceTier:'premium'},
+      {part:'TER 15305627',name:'Alternator — Terex TA400',desc:'24V 100A alternator for Terex TA400 articulated dump trucks.',brands:['Terex'],category:'Electrical',price:'$240–330',priceTier:'mid'},
+      {part:'HIT 2034567',name:'Swing Motor — Hitachi ZX870',desc:'Hydraulic swing motor assembly for Hitachi ZX870 mining excavators.',brands:['Hitachi'],category:'Mining',price:'$3,200–4,500',priceTier:'premium'},
+      {part:'JD R387210',name:'Oil Pump — John Deere 6135',desc:'Engine oil pump for John Deere 6135HF marine/industrial engines.',brands:['John Deere'],category:'Engine',price:'$240–330',priceTier:'budget'},
+      {part:'CAT 2G-4733',name:'Roller Bearing — CAT 988K',desc:'Tapered roller bearing set for CAT 988K wheel loader articulation joint.',brands:['CAT'],category:'Undercarriage',price:'$180–250',priceTier:'budget'},
+      {part:'KOM 22U-02-11230',name:'Air Filter — Komatsu D375A',desc:'Heavy-duty primary air filter element for Komatsu D375A in dusty conditions.',brands:['Komatsu'],category:'Filters',price:'$55–78',priceTier:'budget'},
+      {part:'VOL VO11181245',name:'Bucket Cylinder — Volvo EC750',desc:'Bucket cylinder assembly for Volvo EC750 excavator. Assy w/ seals.',brands:['Volvo'],category:'Hydraulic',price:'$1,620–2,150',priceTier:'premium'},
+      {part:'CAT 7W-8149',name:'Exhaust Manifold — CAT 3512',desc:'Stainless steel exhaust manifold for CAT 3512 industrial engines.',brands:['CAT'],category:'Engine',price:'$380–520',priceTier:'mid'},
+      {part:'KOM 07019-00000',name:'Track Adjuster — Komatsu PC300',desc:'Hydraulic track tension adjuster cylinder for Komatsu PC300 excavators.',brands:['Komatsu'],category:'Undercarriage',price:'$250–350',priceTier:'mid'},
+      {part:'CAS 84231766',name:'Master Switch — Case 1021F',desc:'Battery master disconnect switch for Case 1021F wheel loaders.',brands:['Case'],category:'Electrical',price:'$65–85',priceTier:'budget'},
+      {part:'TER 34926058',name:'Transmission Filter — Terex TR100',desc:'Spin-on transmission filter cartridge for Terex TR100 dump trucks.',brands:['Terex'],category:'Filters',price:'$35–50',priceTier:'budget'},
+      {part:'HIT 8874051',name:'Travel Motor — Hitachi ZX670',desc:'Complete travel motor assembly for Hitachi ZX670 excavators.',brands:['Hitachi'],category:'Hydraulic',price:'$2,850–3,600',priceTier:'premium'},
+    ];
+
+    // ═══════════ I18N ═══════════
+    const i18n = {
+      en: {
+        'nav.home':'Home','nav.catalog':'Products Catalog','nav.about':'About','nav.contact':'Contact',
+        'header.line1':'PRODUCTS','header.line2':'CATALOG','header.sub':'Browse our complete range of premium OEM and aftermarket parts',
+        'filters.toggle':'☰ Filters','filters.brand':'Machine Brand','filters.category':'Category','filters.price':'Price Range',
+        'cat.engine':'Engine Parts','cat.hydraulic':'Hydraulic Parts','cat.mining':'Mining Parts','cat.undercarriage':'Undercarriage','cat.electrical':'Electrical','cat.filters':'Filters',
+        'price.budget':'Budget ($100–$500)','price.mid':'Mid-Range ($500–$2,000)','price.premium':'Premium ($2,000+)',
+        'search.placeholder':'Search by Part Number or Machine Model…','search.btn':'Search',
+        'results.showing':'Showing {n} products','results.none_title':'No Products Found','results.none_sub':'Try adjusting your search or filters',
+        'sort.default':'Sort: Default','sort.name':'Sort: Name A–Z','sort.price-asc':'Sort: Price Low–High','sort.price-desc':'Sort: Price High–Low',
+        'card.quote':'Request Quote','footer.back':'← Back to Homepage',
+      },
+      mk: {
+        'nav.home':'Почетна','nav.catalog':'Каталог на Производи','nav.about':'За Нас','nav.contact':'Контакт',
+        'header.line1':'КАТАЛОГ НА','header.line2':'ПРОИЗВОДИ','header.sub':'Прегледајте ја нашата комплетна палета на премиум ОЕМ и резервни делови',
+        'filters.toggle':'☰ Филтри','filters.brand':'Марка на Машина','filters.category':'Категорија','filters.price':'Ценовен Ранг',
+        'cat.engine':'Делови за Мотор','cat.hydraulic':'Хидраулични Делови','cat.mining':'Рударски Делови','cat.undercarriage':'Подвозје','cat.electrical':'Електрика','cat.filters':'Филтри',
+        'price.budget':'Економски ($100–$500)','price.mid':'Среден Ранг ($500–$2,000)','price.premium':'Премиум ($2,000+)',
+        'search.placeholder':'Пребарај по број на дел или модел на машина…','search.btn':'Пребарај',
+        'results.showing':'Прикажани {n} производи','results.none_title':'Нема Пронајдени Производи','results.none_sub':'Обидете се да ги прилагодите вашето пребарување или филтри',
+        'sort.default':'Подреди: Основно','sort.name':'Подреди: Име А–Ш','sort.price-asc':'Подреди: Цена Ниско–Високо','sort.price-desc':'Подреди: Цена Високо–Ниско',
+        'card.quote':'Побарај Понудa','footer.back':'← Назад кон Почетна',
+      }
+    };
+
+    let currentLang = localStorage.getItem('emc-lang') || 'en';
+
+    function t(key, replacements={}) {
+      let text = (i18n[currentLang] && i18n[currentLang][key]) || i18n['en'][key] || key;
+      Object.entries(replacements).forEach(([k,v]) => text = text.replace(`{${k}}`,v));
+      return text;
+    }
+
+    function applyLang() {
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll('[data-lang-code]').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang-code') === currentLang));
+
+      // Update logo
+      const logo = document.getElementById('main-logo');
+      if (logo) logo.src = currentLang === 'mk' ? 'img/logo/logo-mk.svg' : 'img/logo/logo-main-horizontal.svg';
+
+      // Update all i18n elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const text = (i18n[currentLang] && i18n[currentLang][key]) || (i18n['en'] && i18n['en'][key]) || key;
+        el.textContent = text;
+      });
+
+      // Update placeholder
+      const searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        const phKey = searchInput.getAttribute('data-i18n-placeholder');
+        searchInput.placeholder = (i18n[currentLang] && i18n[currentLang][phKey]) || 'Search…';
+      }
+
+      // Update title
+      document.title = currentLang === 'mk' ? 'Каталог на Производи — Земја Минирање и Градежна Опрема' : 'Products Catalog — Earth Mining and Construction Equipment';
+
+      // Re-render products
+      renderProducts();
+    }
+
+    document.querySelectorAll('[data-lang-code]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentLang = btn.getAttribute('data-lang-code');
+        localStorage.setItem('emc-lang', currentLang);
+        applyLang();
+      });
+    });
+
+    // ═══════════ FILTER & RENDER ═══════════
+    let activeFilters = { brand: [], category: [], price: [] };
+
+    function getActiveFilters() {
+      const f = { brand: [], category: [], price: [] };
+      document.querySelectorAll('.filter-check:checked').forEach(cb => {
+        const type = cb.getAttribute('data-filter');
+        if (f[type]) f[type].push(cb.value);
+      });
+      return f;
+    }
+
+    function renderProducts() {
+      activeFilters = getActiveFilters();
+      const searchQuery = document.getElementById('search-input').value.toLowerCase().trim();
+      const sortBy = document.getElementById('sort-select').value;
+      const grid = document.getElementById('product-grid');
+
+      let filtered = products.filter(p => {
+        // Search
+        if (searchQuery && !p.part.toLowerCase().includes(searchQuery) && !p.name.toLowerCase().includes(searchQuery) && !p.desc.toLowerCase().includes(searchQuery) && !p.brands.some(b => b.toLowerCase().includes(searchQuery))) {
+          return false;
+        }
+        // Brand filter
+        if (activeFilters.brand.length && !p.brands.some(b => activeFilters.brand.includes(b))) return false;
+        // Category filter
+        if (activeFilters.category.length && !activeFilters.category.includes(p.category)) return false;
+        // Price filter
+        if (activeFilters.price.length && !activeFilters.price.includes(p.priceTier)) return false;
+        return true;
+      });
+
+      // Sort
+      if (sortBy === 'name') filtered.sort((a,b) => a.name.localeCompare(b.name));
+      else if (sortBy === 'price-asc') filtered.sort((a,b) => parseFloat(a.price.split('–')[0].replace(/[$,]/g,'')) - parseFloat(b.price.split('–')[0].replace(/[$,]/g,'')));
+      else if (sortBy === 'price-desc') filtered.sort((a,b) => parseFloat(b.price.split('–')[0].replace(/[$,]/g,'')) - parseFloat(a.price.split('–')[0].replace(/[$,]/g,'')));
+
+      // Update count
+      document.getElementById('results-count').textContent = t('results.showing', {n: filtered.length});
+
+      if (!filtered.length) {
+        grid.innerHTML = `<div class="no-results"><i class="fas fa-search"></i><h3>${t('results.none_title')}</h3><p>${t('results.none_sub')}</p></div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="product-card">
+          <div class="product-part">${p.part}</div>
+          <div class="product-name">${p.name}</div>
+          <div class="product-desc">${p.desc}</div>
+          <div class="product-meta">
+            ${p.brands.map(b => `<span class="product-tag">${b}</span>`).join('')}
+            <span class="product-tag">${p.category}</span>
+          </div>
+          <div class="product-bottom">
+            <div class="product-price">${p.price}<br><small>${currentLang==='mk'?'Цена по барање':'Price on request'}</small></div>
+            <a href="mailto:sales@energycontrol.com.mk?subject=${encodeURIComponent('Quote: '+p.part)}" class="btn-quote-sm">${t('card.quote')}</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Event listeners
+    document.getElementById('search-input').addEventListener('input', renderProducts);
+    document.getElementById('search-btn').addEventListener('click', e => { e.preventDefault(); renderProducts(); });
+    document.getElementById('sort-select').addEventListener('change', renderProducts);
+    document.querySelectorAll('.filter-check').forEach(cb => cb.addEventListener('change', renderProducts));
+
+    // Mobile filter toggle
+    document.getElementById('filter-toggle').addEventListener('click', () => {
+      document.getElementById('filters-sidebar').classList.toggle('open');
+    });
+
+    // Initial render
+    applyLang();
+
+    // Mobile menu
+    document.getElementById('mobile-toggle').addEventListener('click', () => {
+      alert('Mobile menu — link to full site navigation');
+    });
+  </script>
+</body>
+</html>

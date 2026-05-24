@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="img/logo/logo-icon-square.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
@@ -27,14 +27,14 @@
     #topnav{
       position:fixed;top:0;left:0;right:0;z-index:100;
       display:flex;justify-content:space-between;align-items:center;
-      padding:18px 48px;
+      padding:20px 48px;
       background:rgba(8,8,8,0.92);
       backdrop-filter:blur(20px);
       border-bottom:1px solid rgba(255,184,0,0.08);
       transition:padding 0.3s;
     }
-    #topnav.scrolled{padding:12px 48px}
-    .logo-img{height:96px;width:auto}
+    #topnav.scrolled{padding:14px 48px}
+    .logo-img{height:120px;width:auto}
     .nav-right{display:flex;align-items:center;gap:28px}
     .nav-links{display:flex;align-items:center;gap:36px}
     .nav-links a{
@@ -85,19 +85,24 @@
 
     #mobile-toggle{
       display:none;background:none;border:none;color:#FFB800;
-      font-size:1.6rem;cursor:pointer;padding:4px 8px;
+      font-size:1.7rem;cursor:pointer;padding:8px 10px;
+      line-height:1;min-width:44px;min-height:44px;
+      border-radius:4px;transition:background 0.2s;
     }
+    #mobile-toggle:hover{background:rgba(255,184,0,0.08)}
 
     /* Mobile menu */
     #mobile-menu{
       display:none;position:fixed;inset:0;z-index:99;
-      background:rgba(8,8,8,0.98);backdrop-filter:blur(24px);
-      flex-direction:column;align-items:center;justify-content:center;gap:32px;
+      background:rgba(6,6,6,0.97);backdrop-filter:blur(28px);
+      flex-direction:column;align-items:center;justify-content:center;gap:28px;
     }
     #mobile-menu.open{display:flex}
     #mobile-menu a{
-      font-size:1.5rem;font-weight:700;color:#fff;text-decoration:none;
-      text-transform:uppercase;letter-spacing:0.15em;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:1.4rem;font-weight:700;color:rgba(255,255,255,0.85);
+      text-decoration:none;text-transform:uppercase;letter-spacing:0.14em;
+      transition:color 0.2s;
     }
     #mobile-menu a:hover{color:#FFB800}
     #mobile-menu .lang-switch-mobile{display:flex;gap:0;border:1px solid rgba(255,184,0,0.3);border-radius:4px;overflow:hidden}
@@ -122,10 +127,10 @@
     #hero::before{
       content:'';position:absolute;inset:0;
       background:linear-gradient(180deg,
-        rgba(8,8,8,0.50) 0%,
-        rgba(8,8,8,0.60) 35%,
-        rgba(8,8,8,0.72) 70%,
-        rgba(8,8,8,0.82) 100%);
+        rgba(8,8,8,0.45) 0%,
+        rgba(8,8,8,0.58) 30%,
+        rgba(8,8,8,0.68) 55%,
+        rgba(8,8,8,0.80) 100%);
       z-index:1;
     }
     #dust-canvas{position:absolute;inset:0;z-index:2;pointer-events:none}
@@ -136,17 +141,23 @@
     }
     .hero-badge{
       display:inline-block;
-      font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:600;
-      text-transform:uppercase;letter-spacing:0.25em;
-      color:#FFB800;border:1px solid rgba(255,184,0,0.3);
-      padding:6px 18px;margin-bottom:24px;
+      font-family:'Inter',sans-serif;font-size:0.72rem;font-weight:600;
+      text-transform:uppercase;letter-spacing:0.28em;
+      color:#FFB800;border:1px solid rgba(255,184,0,0.25);
+      background:rgba(255,184,0,0.04);
+      padding:7px 20px;margin-bottom:24px;
+      animation:fadeInDown 0.8s ease;
+    }
+    @keyframes fadeInDown{
+      from{opacity:0;transform:translateY(-12px)}
+      to{opacity:1;transform:translateY(0)}
     }
     .hero-content h1{
       font-family:'Barlow Condensed',sans-serif;
-      font-size:clamp(2.8rem,7vw,6rem);font-weight:900;
-      text-transform:uppercase;line-height:0.92;margin-bottom:20px;
+      font-size:clamp(2.4rem,6vw,5.2rem);font-weight:900;
+      text-transform:uppercase;line-height:0.94;margin-bottom:22px;
       color:#fff;
-      text-shadow:0 2px 24px rgba(0,0,0,0.75),0 0 60px rgba(255,184,0,0.12);
+      text-shadow:0 2px 28px rgba(0,0,0,0.8),0 0 70px rgba(255,184,0,0.10);
       letter-spacing:-0.01em;
     }
     .hero-content h1 span{color:#FFB800}
@@ -161,17 +172,24 @@
     }
     .btn-primary{
       display:inline-flex;align-items:center;gap:10px;
-      background:linear-gradient(135deg,#FFB800,#E69500);color:#080808;
+      background:linear-gradient(135deg,#FFB800 0%,#E69500 100%);color:#080808;
       font-family:'Barlow Condensed',sans-serif;
       font-size:1.05rem;font-weight:700;text-transform:uppercase;
       letter-spacing:0.08em;
       padding:17px 40px;text-decoration:none;
       transition:transform 0.25s,box-shadow 0.3s;
-      box-shadow:0 4px 20px rgba(255,184,0,0.15);
+      box-shadow:0 4px 20px rgba(255,184,0,0.18);
+      position:relative;overflow:hidden;
     }
+    .btn-primary::after{
+      content:'';position:absolute;top:0;left:-100%;width:80%;height:100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);
+      transition:left 0.6s;
+    }
+    .btn-primary:hover::after{left:120%}
     .btn-primary:hover{
       transform:translateY(-2px);
-      box-shadow:0 8px 36px rgba(255,184,0,0.35);
+      box-shadow:0 8px 36px rgba(255,184,0,0.40);
     }
     .btn-outline{
       display:inline-flex;align-items:center;gap:10px;
@@ -191,11 +209,11 @@
     @keyframes btnGlow{0%,100%{box-shadow:0 0 8px rgba(255,184,0,0.2)}50%{box-shadow:0 0 22px rgba(255,184,0,0.45)}}
 
     /* ═══════════ TRUST BAR ═══════════ */
-    #trust-bar{background:#0D0D0D;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:18px 40px;text-align:center}
-    #trust-bar .trust-label{font-family:'Inter',sans-serif;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;color:#666;margin-bottom:12px}
-    #trust-bar .brands{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px 48px}
-    #trust-bar .brands span{font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#444;transition:color 0.3s}
-    #trust-bar .brands span:hover{color:#FFB800}
+    #trust-bar{background:#0D0D0D;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;padding:20px 40px;text-align:center}
+    #trust-bar .trust-label{font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.25em;color:#555;margin-bottom:14px}
+    #trust-bar .brands{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 12px}
+    #trust-bar .brands span{font-family:'Barlow Condensed',sans-serif;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#777;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:6px 16px;border-radius:3px;transition:all 0.3s}
+    #trust-bar .brands span:hover{color:#FFB800;border-color:rgba(255,184,0,0.3);background:rgba(255,184,0,0.04)}
 
     /* ═══════════ SECTIONS ═══════════ */
     .section{padding:120px 40px;text-align:center}
@@ -218,9 +236,9 @@
 
     /* ═══════════ PRODUCT CARDS ═══════════ */
     .card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .card{background:rgba(8,8,8,0.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.07);padding:40px 24px;text-align:center;transition:border-color 0.3s,transform 0.3s,background 0.3s,box-shadow 0.3s;position:relative;overflow:hidden}
+    .card{background:rgba(8,8,8,0.72);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.07);padding:40px 24px;text-align:center;transition:border-color 0.3s,transform 0.35s,background 0.3s,box-shadow 0.3s;position:relative;overflow:hidden}
     .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#FFB800,transparent);opacity:0;transition:opacity 0.3s}
-    .card:hover{border-color:rgba(255,184,0,0.45);background:rgba(255,184,0,0.04);transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+    .card:hover{border-color:rgba(255,184,0,0.45);background:rgba(255,184,0,0.04);transform:translateY(-6px) scale(1.02);box-shadow:0 12px 40px rgba(0,0,0,0.5)}
     .card:hover::before{opacity:1}
     .card .icon{font-size:2.2rem;color:#FFB800;margin-bottom:16px}
     .card h4{font-family:'Barlow Condensed',sans-serif;font-size:1.25rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;color:#fff}
@@ -255,7 +273,7 @@
 
     /* ═══════════ FOOTER ═══════════ */
     footer{background:#040404;text-align:center;padding:48px 24px 32px;font-family:'Inter',sans-serif;font-size:0.85rem;color:#666;border-top:1px solid #111}
-    footer .logo-img{height:72px;margin-bottom:20px;opacity:0.9}
+    footer .logo-img{height:100px;margin-bottom:22px;opacity:0.92}
     footer a{color:#FFB800;text-decoration:none}
     footer a:hover{color:#E69500}
     footer .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin:16px 0}
@@ -263,7 +281,7 @@
     footer .footer-links a:hover{color:#FFB800}
 
     /* ═══════════ MK LANGUAGE FONT SCALING ═══════════ */
-    .lang-mk .hero-content h1{font-size:clamp(2.2rem,5.8vw,5rem)}
+    .lang-mk .hero-content h1{font-size:clamp(2rem,5vw,4.2rem)}
     .lang-mk .section h2{font-size:clamp(1.8rem,4.2vw,3.2rem)}
     .lang-mk .hero-subtitle{font-size:clamp(0.85rem,1.5vw,1rem)}
     .lang-mk .section p.lead{font-size:0.95rem}
@@ -274,31 +292,141 @@
     .lang-mk .nav-links a{font-size:0.85rem}
     .lang-mk .hero-badge{font-size:0.7rem}
 
+    /* ═══════════ SCROLL REVEAL ═══════════ */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
     /* ═══════════ RESPONSIVE ═══════════ */
     @media(max-width:1024px){
-      .card-grid{grid-template-columns:repeat(2,1fr)}
-      .features-grid{grid-template-columns:1fr}
-      .contact-cards{grid-template-columns:1fr;max-width:400px;margin:40px auto 0}
+      .card-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+      .features-grid{grid-template-columns:1fr 1fr}
+      .contact-cards{grid-template-columns:1fr;max-width:420px;margin:40px auto 0;gap:16px}
+      .stats-row{gap:40px}
+      .section{padding:100px 32px}
+      .hero-content h1{font-size:clamp(2.2rem,6vw,4.5rem)}
+      .section h2{font-size:clamp(1.8rem,4.5vw,3rem)}
+      .lang-mk .hero-content h1{font-size:clamp(1.8rem,5vw,3.8rem)}
+      .lang-mk .section h2{font-size:clamp(1.5rem,3.8vw,2.5rem)}
     }
+
     @media(max-width:768px){
+      /* Navigation */
       #topnav{padding:14px 20px}
+      .nav-right{gap:12px}
       .nav-links{display:none}
       .lang-switch{display:none}
       #mobile-toggle{display:block}
       .logo-img{height:60px}
-      .section{padding:64px 20px}
-      #hero .hero-content{padding:100px 20px 60px}
-      .hero-buttons{flex-direction:column;align-items:center}
+      .btn-quote{padding:10px 18px!important;font-size:0.82rem!important;animation:none}
+
+      /* Mobile menu */
+      #mobile-menu a{font-size:1.3rem}
+      #mobile-menu .btn-quote{padding:14px 32px!important;font-size:1rem!important;animation:btnGlow 2.5s ease-in-out infinite}
+      #mobile-menu{gap:24px;padding:20px}
+      #mobile-close{top:16px;right:20px;font-size:1.6rem}
+
+      /* Hero */
+      #hero{min-height:100vh;background-attachment:scroll}
+      #hero .hero-content{padding:100px 16px 60px}
+      .hero-content h1{font-size:clamp(1.7rem,8vw,2.8rem);line-height:1;margin-bottom:14px}
+      .hero-subtitle{font-size:0.9rem;max-width:100%;margin-bottom:28px}
+      .hero-badge{font-size:0.68rem;padding:5px 14px;margin-bottom:18px}
+      .hero-buttons{flex-direction:column;align-items:stretch;gap:10px}
+      .btn-primary,.btn-outline{justify-content:center;padding:16px 28px;font-size:1rem;min-height:50px}
+
+      /* Sections */
+      .section{padding:56px 16px}
+      .section-label{font-size:0.7rem;letter-spacing:0.2em;margin-bottom:14px}
+      .section h2{font-size:clamp(1.6rem,7vw,2.4rem);line-height:1.05;margin-bottom:12px}
+      .section p.lead{font-size:0.92rem;margin-bottom:36px;line-height:1.6;padding:0 4px}
+
+      /* Trust bar */
+      #trust-bar{padding:14px 12px}
+      #trust-bar .trust-label{font-size:0.62rem;margin-bottom:10px}
+      #trust-bar .brands{gap:5px 8px}
+      #trust-bar .brands span{font-size:0.68rem;padding:5px 10px;letter-spacing:0.05em}
+
+      /* Cards */
       .card-grid{grid-template-columns:1fr 1fr;gap:10px}
-      .stats-row{gap:32px}
-      .stat h3{font-size:2.5rem}
-      #trust-bar .brands{gap:16px 24px}
-      #trust-bar .brands span{font-size:0.8rem}
+      .card{padding:28px 16px}
+      .card .icon{font-size:1.8rem;margin-bottom:10px}
+      .card h4{font-size:1.1rem}
+      .card p{font-size:0.78rem}
+
+      /* Features */
+      .features-grid{grid-template-columns:1fr;gap:14px}
+      .feature{padding:24px 20px}
+      .feature i{font-size:1.3rem;margin-bottom:8px}
+      .feature h4{font-size:1.05rem}
+      .feature p{font-size:0.82rem}
+
+      /* Stats */
+      .stats-row{gap:28px;margin-top:32px}
+      .stat h3{font-size:2.2rem}
+      .stat p{font-size:0.72rem}
+
+      /* Contact */
+      .contact-cards{max-width:100%;gap:12px}
+      .contact-card{padding:28px 20px}
+      .contact-card i{font-size:1.5rem;margin-bottom:10px}
+      .contact-card h4{font-size:1rem}
+      .contact-card p,.contact-card a{font-size:0.9rem}
+      .contact-cta{margin-top:32px}
+      .contact-cta .btn-primary{font-size:1rem;padding:16px 36px}
+
+      /* Footer */
+      footer{padding:36px 16px 24px}
+      footer .logo-img{height:64px;margin-bottom:14px}
+      footer .footer-links{gap:16px}
+      footer .footer-links a{font-size:0.78rem}
+
+      /* MK mobile scaling */
+      .lang-mk .hero-content h1{font-size:clamp(1.4rem,7vw,2.3rem)}
+      .lang-mk .section h2{font-size:clamp(1.3rem,6vw,2rem)}
+      .lang-mk .hero-subtitle{font-size:0.82rem}
+      .lang-mk .section p.lead{font-size:0.85rem}
+      .lang-mk .card h4{font-size:0.95rem}
+      .lang-mk .card p{font-size:0.72rem}
+      .lang-mk .feature h4{font-size:0.92rem}
+      .lang-mk .feature p{font-size:0.76rem}
+
+      /* Scroll indicator hide on mobile */
+      .scroll-indicator{bottom:16px}
+      .scroll-indicator span{width:22px;height:22px}
     }
+
     @media(max-width:480px){
-      .card-grid{grid-template-columns:1fr}
-      .stats-row{flex-direction:column;gap:24px}
-      .contact-cards{gap:12px}
+      #topnav{padding:12px 14px}
+      .logo-img{height:48px}
+      #mobile-toggle{font-size:1.4rem}
+      .btn-quote{padding:8px 14px!important;font-size:0.75rem!important}
+
+      .hero-content h1{font-size:clamp(1.5rem,9vw,2.4rem)}
+      .hero-subtitle{font-size:0.85rem}
+      .hero-content{padding:90px 12px 50px}
+      .btn-primary,.btn-outline{font-size:0.92rem;padding:14px 22px;min-height:46px}
+
+      .section{padding:48px 12px}
+      .section h2{font-size:clamp(1.4rem,8vw,2rem)}
+      .section p.lead{font-size:0.85rem}
+
+      .card-grid{grid-template-columns:1fr;gap:8px}
+      .card{padding:24px 16px}
+
+      .stats-row{flex-direction:column;gap:20px}
+      .stat h3{font-size:2rem}
+
+      .contact-cards{gap:10px}
+      .contact-card{padding:24px 16px}
+
+      footer .logo-img{height:52px}
+      footer .footer-links{gap:12px}
+      footer .footer-links a{font-size:0.72rem}
+
+      .lang-mk .hero-content h1{font-size:clamp(1.2rem,8vw,2rem)}
+      .lang-mk .section h2{font-size:clamp(1.1rem,7vw,1.7rem)}
+      .lang-mk .hero-subtitle{font-size:0.78rem}
+      .lang-mk .section p.lead{font-size:0.78rem}
     }
 
     /* i18n hide class */
@@ -317,6 +445,7 @@
       <div class="nav-links">
         <a href="#hero" data-i18n="nav.home">Home</a>
         <a href="#products" data-i18n="nav.products">Products</a>
+        <a href="catalog.html" data-i18n="nav.catalog">Catalog</a>
         <a href="#quality" data-i18n="nav.about">About</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
@@ -333,6 +462,7 @@
     <button id="mobile-close">✕</button>
     <a href="#hero" data-close-mobile data-i18n="nav.home">Home</a>
     <a href="#products" data-close-mobile data-i18n="nav.products">Products</a>
+    <a href="catalog.html" data-close-mobile data-i18n="nav.catalog">Catalog</a>
     <a href="#quality" data-close-mobile data-i18n="nav.about">About</a>
     <a href="#contact" data-close-mobile data-i18n="nav.contact">Contact</a>
     <div class="lang-switch-mobile">
@@ -374,22 +504,22 @@
       <h2><span data-i18n="products.headline1">ENGINEERED PARTS FOR</span><br><span data-i18n="products.headline2">EVERY MACHINE</span></h2>
       <p class="lead" data-i18n="products.lead">First-class genuine and OEM-quality components trusted by heavy equipment operators worldwide. Built to perform. Built to last.</p>
       <div class="card-grid">
-        <div class="card">
+        <div class="card reveal">
           <div class="icon"><i class="fas fa-engine"></i></div>
           <h4 data-i18n="products.card1.title">Engine Parts</h4>
           <p data-i18n="products.card1.desc">Overhaul kits, pistons, turbos, cylinder heads for CAT, John Deere, and Volvo engines</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <div class="icon"><i class="fas fa-oil-can"></i></div>
           <h4 data-i18n="products.card2.title">Hydraulic Parts</h4>
           <p data-i18n="products.card2.desc">Pumps, motors, cylinders, seal kits — pressure-tested and ready for the toughest jobs</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <div class="icon"><i class="fas fa-mountain"></i></div>
           <h4 data-i18n="products.card3.title">Mining Parts</h4>
           <p data-i18n="products.card3.desc">Swing bearings, GET systems, haul truck components for mining and quarry equipment</p>
         </div>
-        <div class="card">
+        <div class="card reveal">
           <div class="icon"><i class="fas fa-cog"></i></div>
           <h4 data-i18n="products.card4.title">Undercarriage</h4>
           <p data-i18n="products.card4.desc">Track chains, rollers, idlers, final drives for bulldozers, excavators, and drilling rigs</p>
@@ -405,18 +535,18 @@
       <h2><span data-i18n="quality.headline1">BUILT FOR</span><br><span data-i18n="quality.headline2">RELIABILITY</span></h2>
       <p class="lead" data-i18n="quality.lead">OEM-grade quality. Up to 40% below dealer pricing. ISO-certified manufacturing with full traceability. Ships worldwide — most orders within 24 hours.</p>
       <div class="features-grid">
-        <div class="feature"><i class="fas fa-certificate"></i><h4 data-i18n="quality.f1.title">ISO Certified</h4><p data-i18n="quality.f1.desc">All parts manufactured under strict ISO quality management systems with full material traceability.</p></div>
-        <div class="feature"><i class="fas fa-truck-fast"></i><h4 data-i18n="quality.f2.title">Fast Global Shipping</h4><p data-i18n="quality.f2.desc">Most orders dispatched within 24 hours. Reliable logistics partners serving 60+ countries worldwide.</p></div>
-        <div class="feature"><i class="fas fa-tags"></i><h4 data-i18n="quality.f3.title">Competitive Pricing</h4><p data-i18n="quality.f3.desc">Up to 40% below dealer prices without compromising on quality or warranty coverage.</p></div>
-        <div class="feature"><i class="fas fa-headset"></i><h4 data-i18n="quality.f4.title">Expert Support</h4><p data-i18n="quality.f4.desc">Our technical team responds within 2 hours. For urgent breakdowns, we're available by phone.</p></div>
-        <div class="feature"><i class="fas fa-microscope"></i><h4 data-i18n="quality.f5.title">Pressure Tested</h4><p data-i18n="quality.f5.desc">Every hydraulic component undergoes rigorous pressure testing before it leaves our facility.</p></div>
-        <div class="feature"><i class="fas fa-handshake"></i><h4 data-i18n="quality.f6.title">Trusted Partner</h4><p data-i18n="quality.f6.desc">Long-term relationships with mines, quarries, and heavy equipment operators across the globe.</p></div>
+        <div class="feature reveal"><i class="fas fa-certificate"></i><h4 data-i18n="quality.f1.title">ISO Certified</h4><p data-i18n="quality.f1.desc">All parts manufactured under strict ISO quality management systems with full material traceability.</p></div>
+        <div class="feature reveal"><i class="fas fa-truck-fast"></i><h4 data-i18n="quality.f2.title">Fast Global Shipping</h4><p data-i18n="quality.f2.desc">Most orders dispatched within 24 hours. Reliable logistics partners serving 60+ countries worldwide.</p></div>
+        <div class="feature reveal"><i class="fas fa-tags"></i><h4 data-i18n="quality.f3.title">Competitive Pricing</h4><p data-i18n="quality.f3.desc">Up to 40% below dealer prices without compromising on quality or warranty coverage.</p></div>
+        <div class="feature reveal"><i class="fas fa-headset"></i><h4 data-i18n="quality.f4.title">Expert Support</h4><p data-i18n="quality.f4.desc">Our technical team responds within 2 hours. For urgent breakdowns, we're available by phone.</p></div>
+        <div class="feature reveal"><i class="fas fa-microscope"></i><h4 data-i18n="quality.f5.title">Pressure Tested</h4><p data-i18n="quality.f5.desc">Every hydraulic component undergoes rigorous pressure testing before it leaves our facility.</p></div>
+        <div class="feature reveal"><i class="fas fa-handshake"></i><h4 data-i18n="quality.f6.title">Trusted Partner</h4><p data-i18n="quality.f6.desc">Long-term relationships with mines, quarries, and heavy equipment operators across the globe.</p></div>
       </div>
       <div class="stats-row" style="margin-top:60px">
-        <div class="stat"><h3>10K+</h3><p data-i18n="quality.stat1">Parts in Stock</p></div>
-        <div class="stat"><h3>60+</h3><p data-i18n="quality.stat2">Countries Served</p></div>
-        <div class="stat"><h3>24h</h3><p data-i18n="quality.stat3">Average Dispatch</p></div>
-        <div class="stat"><h3>40%</h3><p data-i18n="quality.stat4">Below Dealer Price</p></div>
+        <div class="stat reveal"><h3>10K+</h3><p data-i18n="quality.stat1">Parts in Stock</p></div>
+        <div class="stat reveal"><h3>60+</h3><p data-i18n="quality.stat2">Countries Served</p></div>
+        <div class="stat reveal"><h3>24h</h3><p data-i18n="quality.stat3">Average Dispatch</p></div>
+        <div class="stat reveal"><h3>40%</h3><p data-i18n="quality.stat4">Below Dealer Price</p></div>
       </div>
     </div>
   </section>
@@ -428,9 +558,9 @@
       <h2><span data-i18n="contact.headline1">WE LOOK FORWARD TO</span><br><span data-i18n="contact.headline2">WORKING WITH YOU</span></h2>
       <p class="lead" data-i18n="contact.lead">Tell us what you need. Our team responds within 2 hours. For urgent breakdowns, call us directly.</p>
       <div class="contact-cards">
-        <div class="contact-card"><i class="fas fa-phone-volume"></i><h4 data-i18n="contact.c1">Call Us</h4><a href="tel:+38971229026">+389 71 229 026</a></div>
-        <div class="contact-card"><i class="fas fa-envelope"></i><h4 data-i18n="contact.c2">Email</h4><a href="mailto:sales@energycontrol.com.mk">sales@energycontrol.com.mk</a></div>
-        <div class="contact-card"><i class="fas fa-location-dot"></i><h4 data-i18n="contact.c3">Location</h4><p>Kairska 6, 1000 Skopje<br>Macedonia</p></div>
+        <div class="contact-card reveal"><i class="fas fa-phone-volume"></i><h4 data-i18n="contact.c1">Call Us</h4><a href="tel:+38971229026">+389 71 229 026</a></div>
+        <div class="contact-card reveal"><i class="fas fa-envelope"></i><h4 data-i18n="contact.c2">Email</h4><a href="mailto:sales@energycontrol.com.mk">sales@energycontrol.com.mk</a></div>
+        <div class="contact-card reveal"><i class="fas fa-location-dot"></i><h4 data-i18n="contact.c3">Location</h4><p>Kairska 6, 1000 Skopje<br>Macedonia</p></div>
       </div>
       <div class="contact-cta">
         <a href="mailto:sales@energycontrol.com.mk" class="btn-primary"><i class="fas fa-paper-plane"></i> <span data-i18n="contact.cta">REQUEST A QUOTE</span></a>
@@ -444,6 +574,7 @@
     <div class="footer-links">
       <a href="#hero" data-i18n="nav.home">Home</a>
       <a href="#products" data-i18n="nav.products">Products</a>
+      <a href="catalog.html" data-i18n="nav.catalog">Catalog</a>
       <a href="#quality" data-i18n="nav.about">About</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </div>
@@ -456,7 +587,7 @@
     // ═══════════ TRANSLATIONS ═══════════
     const i18n = {
       en: {
-        'nav.home':'Home','nav.products':'Products','nav.about':'About','nav.contact':'Contact','nav.quote':'GET A QUOTE',
+        'nav.home':'Home','nav.products':'Products','nav.catalog':'Catalog','nav.about':'About','nav.contact':'Contact','nav.quote':'GET A QUOTE',
         'hero.badge':'PREMIUM OEM & AFTERMARKET PARTS',
         'hero.headline1':'ENGINEERED PARTS','hero.headline2':'FOR EVERY MACHINE',
         'hero.sub':'Premium OEM & Aftermarket Parts &nbsp;|&nbsp; Fast Worldwide Delivery &nbsp;|&nbsp; Competitive Prices',
@@ -482,7 +613,7 @@
         'contact.c1':'Call Us','contact.c2':'Email','contact.c3':'Location','contact.cta':'REQUEST A QUOTE',
       },
       mk: {
-        'nav.home':'Почетна','nav.products':'Производи','nav.about':'За Нас','nav.contact':'Контакт','nav.quote':'ПОБАРАЈ ПОНУДА',
+        'nav.home':'Почетна','nav.products':'Производи','nav.catalog':'Каталог','nav.about':'За Нас','nav.contact':'Контакт','nav.quote':'ПОБАРАЈ ПОНУДА',
         'hero.badge':'ПРЕМИУМ ОЕМ И РЕЗЕРВНИ ДЕЛОВИ',
         'hero.headline1':'КВАЛИТЕТНИ ДЕЛОВИ','hero.headline2':'ЗА СЕКОЈА МАШИНА',
         'hero.sub':'Премиум ОЕМ и резервни делови &nbsp;|&nbsp; Брза испорака низ светот &nbsp;|&nbsp; Конкурентни цени',
@@ -583,19 +714,35 @@
     function resizeCanvas(){canvas.width=canvas.parentElement.offsetWidth;canvas.height=canvas.parentElement.offsetHeight}
     resizeCanvas();window.addEventListener('resize',resizeCanvas);
     class Particle{constructor(){this.reset();this.y=Math.random()*canvas.height}
-      reset(){this.x=Math.random()*canvas.width;this.y=-10;this.size=Math.random()*2+0.5;this.speedY=Math.random()*0.4+0.1;this.speedX=(Math.random()-0.5)*0.4;this.opacity=Math.random()*0.3+0.05}
+      reset(){this.x=Math.random()*canvas.width;this.y=-10;this.size=Math.random()*2.5+0.4;this.speedY=Math.random()*0.35+0.08;this.speedX=(Math.random()-0.5)*0.5;this.opacity=Math.random()*0.25+0.03;this.glow=Math.random()>0.7}
       update(){this.y+=this.speedY;this.x+=this.speedX;if(this.y>canvas.height+10)this.reset();if(this.x<-10)this.x=canvas.width+10;if(this.x>canvas.width+10)this.x=-10}
-      draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=`rgba(255,184,0,${this.opacity})`;ctx.fill()}}
-    function initParticles(c=80){particles=[];for(let i=0;i<c;i++)particles.push(new Particle())}
+      draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);const a=this.glow?this.opacity*1.6:this.opacity;ctx.fillStyle=`rgba(255,184,0,${a})`;ctx.fill();if(this.glow){ctx.beginPath();ctx.arc(this.x,this.y,this.size*2,0,Math.PI*2);ctx.fillStyle=`rgba(255,184,0,${a*0.15})`;ctx.fill()}}}
+    function initParticles(c=100){particles=[];for(let i=0;i<c;i++)particles.push(new Particle())}
     function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});animId=requestAnimationFrame(animate)}
     const hero=document.getElementById('hero');
     new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){if(!animId){if(!particles.length)initParticles();animate()}}else{if(animId){cancelAnimationFrame(animId);animId=null}}})},{threshold:0.1}).observe(hero);
 
-    // Smooth scroll
+    // Scroll reveal animations
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // Smooth scroll with nav offset
+    const NAV_HEIGHT = 100;
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click',function(e){
         const t=document.querySelector(this.getAttribute('href'));
-        if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});mobileMenu.classList.remove('open')}
+        if(t){e.preventDefault();
+          const top=t.getBoundingClientRect().top+window.scrollY-NAV_HEIGHT;
+          window.scrollTo({top,behavior:'smooth'});
+          mobileMenu.classList.remove('open')}
       });
     });
   </script>
